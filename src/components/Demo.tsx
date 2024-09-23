@@ -1,4 +1,4 @@
-import { Flex, Image, Space } from "antd";
+import { Image, Space } from "antd";
 import ProjectItem from "./ProjectItem";
 
 export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
