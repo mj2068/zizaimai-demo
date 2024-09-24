@@ -19,5 +19,16 @@ export default function C() {
     };
   }, []);
 
-  return <div>{windowSize && <p>{`${windowSize.w}, ${windowSize.h}`}</p>}</div>;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        backgroundColor: "#f0f5",
+        right: "0",
+        zIndex: 1,
+      }}
+    >
+      {windowSize && <p>{`${windowSize.w}, ${windowSize.h}`}</p>}
+    </div>
+  );
 }

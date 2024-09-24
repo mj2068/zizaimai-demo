@@ -4,8 +4,15 @@ import Demo from "./components/Demo";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Debug_Sizes from "./components/Debug_Sizes";
+import useDebug from "./hooks/useDebug";
 
 export type ColorThemes = "system" | "light" | "dark";
+
+declare global {
+  interface Window {
+    toggleDebug: () => void;
+  }
+}
 
 const colorThemes = ["system", "light", "dark"];
 
@@ -14,7 +21,11 @@ function App() {
     useState<ColorThemes>("system");
   const [isCtrlDown, setIsCtrlDown] = useState(false);
 
+  const { showDebug, toggleDebug } = useDebug();
+
   useEffect(() => {
+    window.toggleDebug = toggleDebug;
+
     function onKeydown(e: KeyboardEvent) {
       if (e.key === "Control") setIsCtrlDown(true);
     }
@@ -34,7 +45,7 @@ function App() {
 
   return (
     <>
-      <Debug_Sizes />
+      {showDebug && <Debug_Sizes />}
       <div>
         <Header
           colorThemes={colorThemes}
@@ -43,7 +54,7 @@ function App() {
         />
 
         <main>
-          <Demo isCtrlDown={isCtrlDown}/>
+          <Demo isCtrlDown={isCtrlDown} />
         </main>
       </div>
 

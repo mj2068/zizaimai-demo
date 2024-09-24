@@ -1,17 +1,29 @@
 #root {
   max-width: 1200px;
   margin: 0 auto;
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  /* background-color: grey; */
+  /* background-color: darkblue; */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* background-color: darkcyan; */
 }
 
 footer {
   margin-top: 4rem;
-  margin-bottom: 4px;
+
+  /* background-color: darkgreen; */
+}
+
+h1,
+h2 {
+  margin-inline: 1rem;
 }
 
 .image.primary {
@@ -26,15 +38,25 @@ footer {
 
 .project-desc {
   margin-inline: 1rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 760px) {
-  .project-container {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .image.primary {
     max-width: unset;
+  }
+
+  .project-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem;
+
+    & .left {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    & .right {
+      grid-column: 2;
+    }
   }
 }
 

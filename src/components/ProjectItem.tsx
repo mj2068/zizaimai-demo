@@ -5,12 +5,17 @@ export default function ProjectItem({
   children,
   bannerImageFileName,
   isImageFirst = true,
+  bgc,
 }: PropsWithChildren<{
   bannerImageFileName?: string;
   isImageFirst?: boolean;
+  bgc?: string;
 }>) {
   const image = bannerImageFileName ? (
-    <Flex justify="center">
+    <Flex
+      className={`image-container${isImageFirst ? "" : " right"}`}
+      justify="center"
+    >
       <Image
         className="image primary"
         src={
@@ -20,11 +25,16 @@ export default function ProjectItem({
     </Flex>
   ) : null;
 
-  const desc = <div className="project-desc">{children}</div>;
+  const desc = (
+    <div className={`project-desc${isImageFirst ? "" : " left"}`}>
+      {children}
+    </div>
+  );
 
   return (
-    <div className="project-container">
-      {isImageFirst ? [image, desc] : [desc, image]}
+    <div className="project-container" style={{ backgroundColor: bgc }}>
+      {image}
+      {desc}
     </div>
   );
 }

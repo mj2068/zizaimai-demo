@@ -6,14 +6,15 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
 
   return (
     <>
-      <p>作品</p>
+      <h2>3D演示示例</h2>
       <div>
-        <Space direction="vertical">
-          <ProjectItem bannerImageFileName="app_render.jpg">
-            <h4>3D换装试衣间</h4>
+        <Space direction="vertical" size="large">
+          <ProjectItem bannerImageFileName="app_render.jpg" bgc="#2F3953">
+            <h3>3D换装试衣间</h3>
+            <i className="small-text">设计适配PC浏览器</i>
             <p>
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-              sint cillum sint consectetur cupidatat.
+              本示例实现了DOM元素和WebGL
+              3D场景之间的无缝交互，可以根据用户的不同选择实时将相应的3D模型搭配展示出来，在视觉上直观的帮助用户更好的选择相应的物品。
             </p>
             <a href="fitting-room">
               示例及开发说明
@@ -26,7 +27,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
                     ).href
                   }
                   width={"1rem"}
-                ></Image>
+                />
               )}
             </a>
           </ProjectItem>
@@ -34,30 +35,25 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
           <ProjectItem
             bannerImageFileName="myster-door_banner.png"
             isImageFirst={false}
+            bgc="#2F0903"
           >
             <h3>奇异门动画入口页面</h3>
-            <p>
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-              sint cillum sint consectetur cupidatat.
-            </p>
+            <i className="small-text">设计适配移动App</i>
+            <p>为移动端App开发的卡通风格交互动画欢迎页面</p>
             <a href="mystery-door">示例</a>
           </ProjectItem>
 
-          <ProjectItem bannerImageFileName="room-scene_render.png">
+          <ProjectItem
+            bannerImageFileName="room-scene_render.png"
+            bgc="#423325"
+          >
             <h3>日式室内场景</h3>
+            <i className="small-text">设计适配PC浏览器</i>
             <p>
-              Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-              reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit
-              ex esse exercitation amet. Nisi anim cupidatat excepteur officia.
-              Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet
-              voluptate voluptate dolor minim nulla est proident. Nostrud
-              officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
-              occaecat reprehenderit commodo officia dolor Lorem duis laboris
-              cupidatat officia voluptate. Culpa proident adipisicing id nulla
-              nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua
-              reprehenderit commodo ex non excepteur duis sunt velit enim.
-              Voluptate laboris sint cupidatat ullamco ut ea consectetur et est
-              culpa et culpa duis.
+              本示例旨在对设备渲染性能进行简易测试。查看WebGL在展现复杂完整、多边形较多以及后处理效果较多的场景时的表现。
+            </p>
+            <p>
+              比如，本例实现的功能包含：物体模型动态位置及角度；相机的运动及DOF景深焦点追踪；实时柔和阴影；方向性和聚光投射两种灯光；泛光Bloom后处理等效果。
             </p>
             <a href="room-scene">示例及开发说明</a>
           </ProjectItem>

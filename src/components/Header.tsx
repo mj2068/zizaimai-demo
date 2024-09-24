@@ -14,7 +14,8 @@ export default function Header({
 
   return (
     <header>
-      [[header]]
+      <h1>示例</h1>
+      <span>zizaimai.space</span>
       <Radio.Group
         optionType="button"
         buttonStyle="solid"

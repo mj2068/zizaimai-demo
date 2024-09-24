@@ -5,8 +5,8 @@ export default function Footer() {
 
   return (
     <footer className="small-text">
+      <Divider />
       <Flex vertical align="center">
-        <Divider />
         <Image
           className="image"
           src={new URL("/src/assets/wechat_qr.png", import.meta.url).href}
