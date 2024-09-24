@@ -41,7 +41,7 @@ function App() {
       removeEventListener("keydown", onKeydown);
       removeEventListener("keyup", onKeyup);
     };
-  }, []);
+  }, [toggleDebug]);
 
   return (
     <>
