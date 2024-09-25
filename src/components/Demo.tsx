@@ -33,13 +33,13 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
           </ProjectItem>
 
           <ProjectItem
-            bannerImageFileName="myster-door_banner.png"
+            bannerImageFileName="myster-door_banner_confetti.png"
             isImageFirst={false}
             bgc="#2F0903"
           >
             <h3>奇异门动画入口页面</h3>
             <i className="small-text">设计适配移动App</i>
-            <p>为移动端App开发的卡通风格交互动画欢迎页面</p>
+            <p>为移动端App开发的卡通风格交互动画欢迎页面。</p>
             <a href="mystery-door">示例</a>
           </ProjectItem>
 
