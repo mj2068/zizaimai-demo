@@ -2,14 +2,14 @@ import { Flex, Image } from "antd";
 import { PropsWithChildren } from "react";
 
 export default function ProjectItem({
-  children,
   bannerImageFileName,
-  isImageFirst = true,
-  bgc,
+  isImageFirst,
+  bgColor,
+  children,
 }: PropsWithChildren<{
   bannerImageFileName?: string;
   isImageFirst?: boolean;
-  bgc?: string;
+  bgColor?: null | string | { light: string };
 }>) {
   const image = bannerImageFileName ? (
     <Flex
@@ -31,8 +31,17 @@ export default function ProjectItem({
     </div>
   );
 
+  let c;
+  if (bgColor) {
+    if (typeof bgColor === "string") {
+      c = bgColor;
+    } else {
+      c = bgColor.light;
+    }
+  }
+
   return (
-    <div className="project-container" style={{ backgroundColor: bgc }}>
+    <div className="project-container" style={{ backgroundColor: c }}>
       {image}
       {desc}
     </div>

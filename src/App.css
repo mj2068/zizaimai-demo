@@ -48,7 +48,7 @@ h2 {
 
   .project-container {
     grid-template-columns: 1fr 1fr;
-    padding: 0.5rem;
+    padding: 2rem;
 
     & .left {
       grid-row: 1;

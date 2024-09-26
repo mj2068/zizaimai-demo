@@ -9,7 +9,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
       <h2>3D演示示例</h2>
       <div>
         <Space direction="vertical" size="large">
-          <ProjectItem bannerImageFileName="app_render.jpg" bgc="#2F3953">
+          <ProjectItem bannerImageFileName="app_render.jpg" bgColor="#2F3953">
             <h3>3D换装试衣间</h3>
             <i className="small-text">设计适配PC浏览器</i>
             <p>
@@ -34,8 +34,8 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
 
           <ProjectItem
             bannerImageFileName="myster-door_banner_confetti.png"
-            isImageFirst={false}
-            bgc="#2F0903"
+            isImageFirst={true}
+            bgColor="#2F0903"
           >
             <h3>奇异门动画入口页面</h3>
             <i className="small-text">设计适配移动App</i>
@@ -45,7 +45,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
 
           <ProjectItem
             bannerImageFileName="room-scene_render.png"
-            bgc="#423325"
+            bgColor="#423325"
           >
             <h3>日式室内场景</h3>
             <i className="small-text">设计适配PC浏览器</i>

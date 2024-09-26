@@ -1,7 +1,7 @@
 import { Divider, Flex, Image } from "antd";
 
-export default function Footer() {
-  //
+export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
+  console.log("render - Footer");
 
   return (
     <footer className="small-text">
@@ -20,6 +20,7 @@ export default function Footer() {
             yuelianghushenfu@sina.com
           </a>
         </span>
+        <button onClick={toggleDebug}>dev</button>
         <div className="copyright-container mar-t-8">
           <span>
             <a className="grey-text" href="https://zizaimai.space/demo/">

@@ -1,34 +1,111 @@
 import { useEffect, useState } from "react";
 
 export default function C() {
+  // console.log("render");
+
   const [windowSize, setWindowSize] = useState<{ w: number; h: number } | null>(
-    null,
+    { w: innerWidth, h: innerHeight },
   );
+  const [dpr, setDpr] = useState(devicePixelRatio);
+  const [isDragging, setIsDragging] = useState(false);
+  const [pos, setPos] = useState({ left: "0", top: "0" });
+  const [offset, setOffset] = useState<null | { x: number; y: number }>(null);
 
   useEffect(() => {
-    function onResize() {
+    function onWindowResize() {
       setWindowSize({ w: innerWidth, h: innerHeight });
     }
 
-    addEventListener("resize", onResize);
-
-    setWindowSize({ w: innerWidth, h: innerHeight });
+    addEventListener("resize", onWindowResize);
 
     return () => {
-      removeEventListener("resize", onResize);
+      removeEventListener("resize", onWindowResize);
     };
   }, []);
+
+  useEffect(() => {
+    // console.log("effect");
+    function onDprChange() {
+      // console.log("change");
+      setDpr(devicePixelRatio);
+    }
+
+    const dprMatch = matchMedia(`(resolution: ${devicePixelRatio}dppx)`);
+    dprMatch.addEventListener("change", onDprChange);
+
+    return () => {
+      // console.log("effect clean");
+      dprMatch.removeEventListener("change", onDprChange);
+    };
+  }, [dpr]);
+
+  useEffect(() => {
+    function onPointerMove(e: MouseEvent) {
+      if (!offset) return;
+
+      setPos({
+        top: `${e.pageY - offset.y}px`,
+        left: `${e.pageX - offset.x}px`,
+      });
+    }
+
+    if (isDragging) {
+      document.body.addEventListener("pointermove", onPointerMove, true);
+    }
+
+    return () => {
+      document.body.removeEventListener("pointermove", onPointerMove, true);
+    };
+  }, [isDragging, offset]);
+
+  const v = "aaa";
 
   return (
     <div
       style={{
         position: "absolute",
-        backgroundColor: "#f0f5",
-        right: "0",
-        zIndex: 1,
+        backgroundColor: "#f0fb",
+        left: pos.left,
+        top: pos.top,
+        zIndex: 9,
+        minWidth: "12rem",
       }}
     >
-      {windowSize && <p>{`${windowSize.w}, ${windowSize.h}`}</p>}
+      <style>{`
+        p.${v} {
+          color: white;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      `}</style>
+
+      <div
+        className="drag-handle"
+        style={{
+          backgroundColor: "darkslategrey",
+          textAlign: "center",
+          cursor: "grab",
+        }}
+        onPointerDown={(e) => {
+          if (0 === e.button) {
+            e.preventDefault();
+
+            setIsDragging(true);
+            setOffset({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+          }
+        }}
+        onPointerUp={(e) => {
+          if (0 === e.button) setIsDragging(false);
+        }}
+      >
+        =
+      </div>
+      <div style={{ padding: "0.5rem" }}>
+        {windowSize && (
+          <p className={v}>{`size: ${windowSize.w}, ${windowSize.h}`}</p>
+        )}
+        <p className={v}>dpr: {dpr.toFixed(2)}</p>
+      </div>
     </div>
   );
 }

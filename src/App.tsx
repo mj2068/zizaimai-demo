@@ -17,11 +17,13 @@ declare global {
 const colorThemes = ["system", "light", "dark"];
 
 function App() {
+  /* ************ debug ************ */
+  const { showDebug, toggleDebug } = useDebug();
+  /* ************ debug ************ */
+
   const [selectedColorTheme, setSelectedColorTheme] =
     useState<ColorThemes>("system");
   const [isCtrlDown, setIsCtrlDown] = useState(false);
-
-  const { showDebug, toggleDebug } = useDebug();
 
   useEffect(() => {
     window.toggleDebug = toggleDebug;
@@ -58,7 +60,7 @@ function App() {
         </main>
       </div>
 
-      <Footer />
+      <Footer toggleDebug={toggleDebug} />
     </>
   );
 }
