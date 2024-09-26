@@ -1,7 +1,7 @@
 import { Divider, Flex, Image } from "antd";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
-  console.log("render - Footer");
+  // console.log("render - Footer");
 
   return (
     <footer className="small-text">

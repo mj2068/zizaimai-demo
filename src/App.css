@@ -30,13 +30,37 @@ h2 {
   max-height: 300px;
 }
 
+a.button {
+  display: block;
+  width: fit-content;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  background-color: var(--clr-dark-button-bgc-primary);
+  color: var(--clr-dark-button-primary);
+  border: 2px solid darkslateblue;
+  /* box-shadow: 0px 0px 4px red; */
+}
+a.button:hover {
+  color: unset;
+  background-color: var(--clr-dark-button-hover-bgc-primary);
+
+}
+a.button:focus {
+  border: 2px solid #bfb;
+}
+
 .project-container {
   display: grid;
   gap: 1rem;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .project-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-inline: 1rem;
   padding-bottom: 1rem;
 }

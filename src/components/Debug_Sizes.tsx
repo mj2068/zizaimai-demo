@@ -85,11 +85,15 @@ export default function C() {
           backgroundColor: "darkslategrey",
           textAlign: "center",
           cursor: "grab",
+          // touch-action: none is for mobile browser, override its default
+          touchAction: "none",
         }}
         onPointerDown={(e) => {
-          if (0 === e.button) {
-            e.preventDefault();
+          console.log(e);
 
+          if (0 === e.button) {
+            // preventDefault is for disable selecting elements and text
+            e.preventDefault();
             setIsDragging(true);
             setOffset({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
           }
@@ -97,6 +101,7 @@ export default function C() {
         onPointerUp={(e) => {
           if (0 === e.button) setIsDragging(false);
         }}
+        onPointerMove={console.dir}
       >
         =
       </div>

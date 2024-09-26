@@ -1,4 +1,4 @@
-import { Radio } from "antd";
+import { Image, Radio } from "antd";
 import { ColorThemes } from "../App";
 
 export default function Header({
@@ -6,7 +6,7 @@ export default function Header({
   selectedColorTheme,
   setSelectedColorTheme,
 }: {
-  colorThemes: string[];
+  colorThemes: { id: string; label: string; imageHref: string }[];
   selectedColorTheme: string;
   setSelectedColorTheme: (v: ColorThemes) => void;
 }) {
@@ -22,9 +22,9 @@ export default function Header({
         value={selectedColorTheme}
         onChange={(v) => setSelectedColorTheme(v.target.value)}
       >
-        {colorThemes.map((t) => (
-          <Radio key={t} value={t}>
-            {t}
+        {colorThemes.map((theme) => (
+          <Radio key={theme.id} value={theme.id}>
+            <Image src={theme.imageHref} width={16} />
           </Radio>
         ))}
       </Radio.Group>

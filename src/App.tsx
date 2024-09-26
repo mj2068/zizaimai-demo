@@ -14,7 +14,32 @@ declare global {
   }
 }
 
-const colorThemes = ["system", "light", "dark"];
+const colorThemes = [
+  {
+    id: "system",
+    label: "System",
+    imageHref: new URL(
+      "/src/assets/icons/settings_128dp_E8EAED_FILL1_wght300_GRAD0_opsz48.svg",
+      import.meta.url,
+    ).href,
+  },
+  {
+    id: "light",
+    label: "Light",
+    imageHref: new URL(
+      "/src/assets/icons/light_mode_128dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg",
+      import.meta.url,
+    ).href,
+  },
+  {
+    id: "dark",
+    label: "Dark",
+    imageHref: new URL(
+      "/src/assets/icons/dark_mode_128dp_E8EAED_FILL1_wght300_GRAD0_opsz48.svg",
+      import.meta.url,
+    ).href,
+  },
+];
 
 function App() {
   /* ************ debug ************ */
