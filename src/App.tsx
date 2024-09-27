@@ -6,7 +6,8 @@ import Header from "./components/Header";
 import Debug_Sizes from "./components/Debug_Sizes";
 import useDebug from "./hooks/useDebug";
 
-export type ColorThemes = "system" | "light" | "dark";
+export type ThemeSetting = "system" | "light" | "dark";
+type Theme = "light" | "dark";
 
 declare global {
   interface Window {
@@ -14,7 +15,7 @@ declare global {
   }
 }
 
-const colorThemes = [
+const themeModeOptions = [
   {
     id: "system",
     label: "System",
@@ -46,8 +47,23 @@ function App() {
   const { showDebug, toggleDebug } = useDebug();
   /* ************ debug ************ */
 
-  const [selectedColorTheme, setSelectedColorTheme] =
-    useState<ColorThemes>("system");
+  // set initial state by read from localStorage, or if undefined, 'system'
+  const [themeSetting, setThemeSetting] = useState<ThemeSetting>(
+    () =>
+      (localStorage.getItem("themeSetting") as ThemeSetting | undefined) ||
+      "system",
+  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (
+      "system" !== themeSetting &&
+      ("light" === themeSetting || "dark" === themeSetting)
+    )
+      return themeSetting;
+
+    const matchesDark = matchMedia("(prefers-color-scheme: dark)").matches;
+    return matchesDark ? "dark" : "light";
+  });
+
   const [isCtrlDown, setIsCtrlDown] = useState(false);
 
   useEffect(() => {
@@ -70,20 +86,45 @@ function App() {
     };
   }, [toggleDebug]);
 
+  useEffect(() => {
+    if (themeSetting !== localStorage.getItem("themeSetting"))
+      localStorage.setItem("themeSetting", themeSetting);
+
+    if ("system" !== themeSetting) {
+      setTheme(themeSetting);
+      return;
+    }
+
+    const mediaDark = matchMedia("(prefers-color-scheme: dark)");
+    setTheme(mediaDark.matches ? "dark" : "light");
+
+    function onChange(e: MediaQueryListEvent) {
+      setTheme(e.matches ? "dark" : "light");
+    }
+    mediaDark.addEventListener("change", onChange);
+
+    return () => {
+      mediaDark.removeEventListener("change", onChange);
+    };
+  }, [themeSetting]);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+    if ("dark" === theme) document.documentElement.classList.add("dark");
+  }, [theme]);
+
   return (
     <>
       {showDebug && <Debug_Sizes />}
-      <div>
-        <Header
-          colorThemes={colorThemes}
-          selectedColorTheme={selectedColorTheme}
-          setSelectedColorTheme={setSelectedColorTheme}
-        />
+      <Header
+        colorThemes={themeModeOptions}
+        selectedColorTheme={themeSetting}
+        setSelectedColorTheme={setThemeSetting}
+      />
 
-        <main>
-          <Demo isCtrlDown={isCtrlDown} />
-        </main>
-      </div>
+      <main>
+        <Demo isCtrlDown={isCtrlDown} />
+      </main>
 
       <Footer toggleDebug={toggleDebug} />
     </>

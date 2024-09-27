@@ -1,24 +1,18 @@
 #root {
-  max-width: 1200px;
+  max-width: 1024px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-
-  /* background-color: darkblue; */
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* background-color: darkcyan; */
 }
 
 footer {
   margin-top: 4rem;
-
-  /* background-color: darkgreen; */
 }
 
 h1,
@@ -45,7 +39,6 @@ a.button {
 a.button:hover {
   color: unset;
   background-color: var(--clr-dark-button-hover-bgc-primary);
-
 }
 a.button:focus {
   border: 2px solid #bfb;
@@ -54,7 +47,6 @@ a.button:focus {
 .project-container {
   display: grid;
   gap: 1rem;
-  /* align-items: center; */
 }
 
 .project-desc {
@@ -65,7 +57,7 @@ a.button:focus {
   padding-bottom: 1rem;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .image.primary {
     max-width: unset;
   }
