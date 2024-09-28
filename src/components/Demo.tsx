@@ -9,7 +9,10 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
       <h2>3D演示示例</h2>
       <div>
         <Space direction="vertical" size="large">
-          <ProjectItem bannerImageFileName="app_render.jpg" bgColor="#2F3953">
+          <ProjectItem
+            bannerImageFileName="app_render.jpg"
+            bgColors={{ light: "#999fbb", dark: "#090f21" }}
+          >
             <div>
               <h3>3D换装试衣间</h3>
               <i className="small-text">设计适配PC浏览器</i>
@@ -39,11 +42,11 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
           <ProjectItem
             bannerImageFileName="myster-door_banner_confetti.png"
             isImageFirst={true}
-            bgColor="#2F0903"
+            bgColors={{ light: "#ffcfc8", dark: "#311003" }}
           >
             <div>
-              <i className="small-text">设计适配移动App</i>
               <h3>奇异门动画入口页面</h3>
+              <i className="small-text">设计适配移动App</i>
               <p>为移动端App开发的卡通风格交互动画欢迎页面。</p>
             </div>
             <div>
@@ -55,7 +58,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
 
           <ProjectItem
             bannerImageFileName="room-scene_render.png"
-            bgColor="#423325"
+            bgColors={{light:"#d9c7b0", dark:"#302416"}}
           >
             <div>
               <h3>日式室内场景</h3>
@@ -68,7 +71,9 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               </p>
             </div>
             <div>
-              <a className="button" href="room-scene">示例及开发说明</a>
+              <a className="button" href="room-scene">
+                示例及开发说明
+              </a>
             </div>
           </ProjectItem>
         </Space>

@@ -5,9 +5,15 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Debug_Sizes from "./components/Debug_Sizes";
 import useDebug from "./hooks/useDebug";
+import { AppContext } from "./AppContext";
 
 export type ThemeSetting = "system" | "light" | "dark";
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
+export interface ThemeOption {
+  id: ThemeSetting;
+  label: string;
+  icon: string;
+}
 
 declare global {
   interface Window {
@@ -15,31 +21,10 @@ declare global {
   }
 }
 
-const themeModeOptions = [
-  {
-    id: "system",
-    label: "System",
-    imageHref: new URL(
-      "/src/assets/icons/settings_128dp_E8EAED_FILL1_wght300_GRAD0_opsz48.svg",
-      import.meta.url,
-    ).href,
-  },
-  {
-    id: "light",
-    label: "Light",
-    imageHref: new URL(
-      "/src/assets/icons/light_mode_128dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg",
-      import.meta.url,
-    ).href,
-  },
-  {
-    id: "dark",
-    label: "Dark",
-    imageHref: new URL(
-      "/src/assets/icons/dark_mode_128dp_E8EAED_FILL1_wght300_GRAD0_opsz48.svg",
-      import.meta.url,
-    ).href,
-  },
+const themeSettingOptions: ThemeOption[] = [
+  { id: "system", label: "系统", icon: "brightness_4" },
+  { id: "light", label: "浅色", icon: "light_mode" },
+  { id: "dark", label: "暗色", icon: "dark_mode" },
 ];
 
 function App() {
@@ -115,18 +100,16 @@ function App() {
 
   return (
     <>
-      {showDebug && <Debug_Sizes />}
-      <Header
-        colorThemes={themeModeOptions}
-        selectedColorTheme={themeSetting}
-        setSelectedColorTheme={setThemeSetting}
-      />
+      <AppContext.Provider value={{ theme, setThemeSetting, themeSetting }}>
+        {showDebug && <Debug_Sizes />}
+        <Header themeSettingOptions={themeSettingOptions} />
 
-      <main>
-        <Demo isCtrlDown={isCtrlDown} />
-      </main>
+        <main>
+          <Demo isCtrlDown={isCtrlDown} />
+        </main>
 
-      <Footer toggleDebug={toggleDebug} />
+        <Footer toggleDebug={toggleDebug} />
+      </AppContext.Provider>
     </>
   );
 }
