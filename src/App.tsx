@@ -17,7 +17,7 @@ export interface ThemeOption {
 
 declare global {
   interface Window {
-    toggleDebug: () => void;
+    toggleDebug?: () => void;
   }
 }
 
@@ -49,25 +49,11 @@ function App() {
     return matchesDark ? "dark" : "light";
   });
 
-  const [isCtrlDown, setIsCtrlDown] = useState(false);
-
   useEffect(() => {
     window.toggleDebug = toggleDebug;
 
-    function onKeydown(e: KeyboardEvent) {
-      if (e.key === "Control") setIsCtrlDown(true);
-    }
-
-    function onKeyup(e: KeyboardEvent) {
-      if (e.key === "Control") setIsCtrlDown(false);
-    }
-
-    addEventListener("keydown", onKeydown);
-    addEventListener("keyup", onKeyup);
-
     return () => {
-      removeEventListener("keydown", onKeydown);
-      removeEventListener("keyup", onKeyup);
+      delete window.toggleDebug;
     };
   }, [toggleDebug]);
 
@@ -105,7 +91,7 @@ function App() {
         <Header themeSettingOptions={themeSettingOptions} />
 
         <main>
-          <Demo isCtrlDown={isCtrlDown} />
+          <Demo />
         </main>
 
         <Footer toggleDebug={toggleDebug} />

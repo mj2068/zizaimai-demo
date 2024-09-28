@@ -1,7 +1,7 @@
-import { Image, Space } from "antd";
+import { Space } from "antd";
 import ProjectItem from "./ProjectItem";
 
-export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
+export default function Demo() {
   //
 
   return (
@@ -30,18 +30,8 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
                   color: "var(--clr-dark-fg)",
                 }}
               >
+                <span className="material-icons-round">play_arrow</span>
                 示例及开发说明
-                {isCtrlDown && (
-                  <Image
-                    src={
-                      new URL(
-                        "/src/assets/icons/open_in_new_128dp_E8EAED_FILL0_wght400_GRAD0_opsz48.svg",
-                        import.meta.url,
-                      ).href
-                    }
-                    width={"1rem"}
-                  />
-                )}
               </a>
             </div>
           </ProjectItem>
@@ -57,7 +47,15 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               <p>为移动端App开发的卡通风格交互动画欢迎页面。</p>
             </div>
             <div>
-              <a className="button" href="mystery-door" style={{backgroundColor:"#c53f26", color:"var(--clr-dark-fg)"}}>
+              <a
+                className="button"
+                href="mystery-door"
+                style={{
+                  backgroundColor: "#c53f26",
+                  color: "var(--clr-dark-fg)",
+                }}
+              >
+                <span className="material-icons-round">play_arrow</span>
                 示例
               </a>
             </div>
@@ -78,8 +76,16 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               </p>
             </div>
             <div>
-              <a className="button" href="room-scene" style={{backgroundColor:"#526638", color:"var(--clr-dark-fg)"}}>
-                示例及开发说明
+              <a
+                className="button"
+                href="room-scene"
+                style={{
+                  backgroundColor: "#526638",
+                  color: "var(--clr-dark-fg)",
+                }}
+              >
+                <span className="material-icons-round">play_arrow</span>
+                <span>示例及开发说明</span>
               </a>
             </div>
           </ProjectItem>

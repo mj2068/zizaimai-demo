@@ -16,10 +16,7 @@ export default function Header({
         algorithm:
           appContext?.theme === "dark" ? theme.darkAlgorithm : undefined,
         token: {
-          colorPrimary: "orange",
-          // colorPrimaryText: "blue",
-          // colorPrimaryBg: "green",
-          // colorPrimaryActive: "purple",
+          colorPrimary: "#dd774b",
         },
       }}
     >
