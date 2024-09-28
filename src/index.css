@@ -1,9 +1,11 @@
 :root {
-  --clr-fg: #212527;
-  --clr-bg: #ffffff;
+  --clr-light-fg: #212527;
+  --clr-light-bg: #ffffff;
+  --clr-dark-fg: rgba(255, 255, 255, 0.87);
+  --clr-dark-bg: #242424;
 
-  --clr-fg-accent: #000;
-  --clr-bg-accent: #fff;
+  --clr-fg: var(--clr-light-fg);
+  --clr-bg: var(--clr-light-bg);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   /* line-height: 1.5; */
@@ -20,10 +22,8 @@
 }
 
 :root.dark {
-  --clr-fg: rgba(255, 255, 255, 0.87);
-  --clr-bg: #242424;
-  --clr-fg-accent: #fff;
-  --clr-bg-accent: #000;
+  --clr-fg: var(--clr-dark-fg);
+  --clr-bg: var(--clr-dark-bg);
 
   color-scheme: dark;
 }

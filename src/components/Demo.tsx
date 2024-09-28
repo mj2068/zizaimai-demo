@@ -22,7 +22,14 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               </p>
             </div>
             <div>
-              <a className="button" href="fitting-room">
+              <a
+                className="button"
+                href="fitting-room"
+                style={{
+                  backgroundColor: "#8360c3",
+                  color: "var(--clr-dark-fg)",
+                }}
+              >
                 示例及开发说明
                 {isCtrlDown && (
                   <Image
@@ -50,7 +57,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               <p>为移动端App开发的卡通风格交互动画欢迎页面。</p>
             </div>
             <div>
-              <a className="button" href="mystery-door">
+              <a className="button" href="mystery-door" style={{backgroundColor:"#c53f26", color:"var(--clr-dark-fg)"}}>
                 示例
               </a>
             </div>
@@ -58,7 +65,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
 
           <ProjectItem
             bannerImageFileName="room-scene_render.png"
-            bgColors={{light:"#d9c7b0", dark:"#302416"}}
+            bgColors={{ light: "#d9c7b0", dark: "#302416" }}
           >
             <div>
               <h3>日式室内场景</h3>
@@ -71,7 +78,7 @@ export default function Demo({ isCtrlDown }: { isCtrlDown: boolean }) {
               </p>
             </div>
             <div>
-              <a className="button" href="room-scene">
+              <a className="button" href="room-scene" style={{backgroundColor:"#526638", color:"var(--clr-dark-fg)"}}>
                 示例及开发说明
               </a>
             </div>

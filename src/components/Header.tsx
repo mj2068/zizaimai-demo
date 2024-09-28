@@ -16,7 +16,7 @@ export default function Header({
         algorithm:
           appContext?.theme === "dark" ? theme.darkAlgorithm : undefined,
         token: {
-          // colorPrimary: "red",
+          colorPrimary: "orange",
           // colorPrimaryText: "blue",
           // colorPrimaryBg: "green",
           // colorPrimaryActive: "purple",
@@ -38,8 +38,8 @@ export default function Header({
               key={theme.id}
               value={theme.id}
               style={{
-                width: "3rem",
-                height: "3rem",
+                width: "2rem",
+                height: "2rem",
                 padding: "0",
               }}
             >
@@ -50,7 +50,7 @@ export default function Header({
               >
                 <span
                   className="material-icons"
-                  style={{ fontSize: "2rem", userSelect: "none" }}
+                  style={{ fontSize: "1.5rem", userSelect: "none" }}
                 >
                   {theme.icon}
                 </span>
