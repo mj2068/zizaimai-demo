@@ -7,6 +7,7 @@ export default function C() {
     { w: innerWidth, h: innerHeight },
   );
   const [dpr, setDpr] = useState(devicePixelRatio);
+  const [scrollY, setScrollY] = useState(window.scrollY);
   const [isDragging, setIsDragging] = useState(false);
   const [pos, setPos] = useState({ left: "0", top: "0" });
   const [offset, setOffset] = useState<null | { x: number; y: number }>(null);
@@ -16,10 +17,16 @@ export default function C() {
       setWindowSize({ w: innerWidth, h: innerHeight });
     }
 
+    function onScroll() {
+      setScrollY(window.scrollY);
+    }
+
     addEventListener("resize", onWindowResize);
+    addEventListener("scroll", onScroll);
 
     return () => {
       removeEventListener("resize", onWindowResize);
+      removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -89,8 +96,6 @@ export default function C() {
           touchAction: "none",
         }}
         onPointerDown={(e) => {
-          console.log(e);
-
           if (0 === e.button) {
             // preventDefault is for disable selecting elements and text
             e.preventDefault();
@@ -101,7 +106,6 @@ export default function C() {
         onPointerUp={(e) => {
           if (0 === e.button) setIsDragging(false);
         }}
-        onPointerMove={console.dir}
       >
         =
       </div>
@@ -110,6 +114,7 @@ export default function C() {
           <p className={v}>{`size: ${windowSize.w}, ${windowSize.h}`}</p>
         )}
         <p className={v}>dpr: {dpr.toFixed(2)}</p>
+        <p className={v}>scrollY: {scrollY.toFixed(0)}</p>
       </div>
     </div>
   );

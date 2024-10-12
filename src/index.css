@@ -7,6 +7,10 @@
   --clr-fg: var(--clr-light-fg);
   --clr-bg: var(--clr-light-bg);
 
+  /* Add secondary background and text colors */
+  --clr-secondary-fg: #464646;
+  --clr-secondary-bg: #f0f0f0;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light;
@@ -20,6 +24,10 @@
 :root.dark {
   --clr-fg: var(--clr-dark-fg);
   --clr-bg: var(--clr-dark-bg);
+
+  /* Update secondary colors for dark mode */
+  --clr-secondary-bg: #1a1a1a;
+  --clr-secondary-fg: #9e9e9e;
 
   color-scheme: dark;
 }

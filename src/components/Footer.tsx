@@ -1,11 +1,10 @@
-import { Divider, Flex, Image } from "antd";
+import { Flex, Image } from "antd";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
   // console.log("render - Footer");
 
   return (
-    <footer className="small-text">
-      <Divider />
+    <footer className="small-text gray-text round-corner-4">
       <Flex vertical align="center">
         <Image
           className="image"
@@ -14,12 +13,15 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
           alt="微信二维码"
           width={96}
         />
-        <span>
-          邮箱：
+
+        <Flex align="center" gap="0.25rem">
+          <span className="material-icons" style={{ fontSize: "1rem" }}>
+            email
+          </span>
           <a className="grey-text" href="mailto:yuelianghushenfu@sina.com">
             yuelianghushenfu@sina.com
           </a>
-        </span>
+        </Flex>
         <button onClick={toggleDebug}>dev</button>
         <div className="copyright-container mar-t-8">
           <span>

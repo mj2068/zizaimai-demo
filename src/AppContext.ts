@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Theme, ThemeSetting } from "./App";
+import { Theme, ThemeSetting } from "./theme";
 
 export const AppContext = createContext<{
   theme: Theme;

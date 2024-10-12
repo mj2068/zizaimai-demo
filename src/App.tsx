@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Demo from "./components/Demo";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Debug_Sizes from "./components/Debug_Sizes";
 import useDebug from "./hooks/useDebug";
+import { Outlet, useMatches } from "react-router-dom";
 import { AppContext } from "./AppContext";
-
-export type ThemeSetting = "system" | "light" | "dark";
-export type Theme = "light" | "dark";
-export interface ThemeOption {
-  id: ThemeSetting;
-  label: string;
-  icon: string;
-}
+import { Theme, ThemeSetting } from "./theme";
+import { Flex } from "antd";
+import GotoTopButton from "./components/GotoTopButton";
 
 declare global {
   interface Window {
@@ -21,22 +16,30 @@ declare global {
   }
 }
 
-const themeSettingOptions: ThemeOption[] = [
-  { id: "system", label: "系统", icon: "brightness_4" },
-  { id: "light", label: "浅色", icon: "light_mode" },
-  { id: "dark", label: "暗色", icon: "dark_mode" },
-];
+console.log("App.tsx");
 
 function App() {
+  console.log("App()");
+
   /* ************ debug ************ */
   const { showDebug, toggleDebug } = useDebug();
   /* ************ debug ************ */
 
+  useEffect(() => {
+    window.toggleDebug = toggleDebug;
+
+    return () => {
+      delete window.toggleDebug;
+    };
+  }, [toggleDebug]);
+  
+  const matches = useMatches();
+  console.log(matches);
+
   // set initial state by read from localStorage, or if undefined, 'system'
-  const [themeSetting, setThemeSetting] = useState<ThemeSetting>(
+  const [themeSetting, setThemeSetting] = useState(
     () =>
-      (localStorage.getItem("themeSetting") as ThemeSetting | undefined) ||
-      "system",
+      (localStorage.getItem("themeSetting") as ThemeSetting | null) || "system"
   );
   const [theme, setTheme] = useState<Theme>(() => {
     if (
@@ -50,17 +53,11 @@ function App() {
   });
 
   useEffect(() => {
-    window.toggleDebug = toggleDebug;
-
-    return () => {
-      delete window.toggleDebug;
-    };
-  }, [toggleDebug]);
-
-  useEffect(() => {
     if (themeSetting !== localStorage.getItem("themeSetting"))
       localStorage.setItem("themeSetting", themeSetting);
 
+    // 如果不是“系统”，则设置theme状态后直接返回，不再配置media查询。因为这个media是为了
+    // 监听系统配置变化的（如：用户去Windows设置中调整了系统主题）
     if ("system" !== themeSetting) {
       setTheme(themeSetting);
       return;
@@ -69,13 +66,13 @@ function App() {
     const mediaDark = matchMedia("(prefers-color-scheme: dark)");
     setTheme(mediaDark.matches ? "dark" : "light");
 
-    function onChange(e: MediaQueryListEvent) {
+    function onColorMediaChange(e: MediaQueryListEvent) {
       setTheme(e.matches ? "dark" : "light");
     }
-    mediaDark.addEventListener("change", onChange);
+    mediaDark.addEventListener("change", onColorMediaChange);
 
     return () => {
-      mediaDark.removeEventListener("change", onChange);
+      mediaDark.removeEventListener("change", onColorMediaChange);
     };
   }, [themeSetting]);
 
@@ -86,15 +83,18 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={{ theme, setThemeSetting, themeSetting }}>
+      <AppContext.Provider value={{ theme, themeSetting, setThemeSetting }}>
         {showDebug && <Debug_Sizes />}
-        <Header themeSettingOptions={themeSettingOptions} />
+        <Flex vertical>
+          <Header />
 
-        <main>
-          <Demo />
-        </main>
-
+          <main style={{ alignSelf: "center" }}>
+            <Outlet />
+          </main>
+        </Flex>
         <Footer toggleDebug={toggleDebug} />
+
+        <GotoTopButton />
       </AppContext.Provider>
     </>
   );

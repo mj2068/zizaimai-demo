@@ -1,13 +1,17 @@
 import { ConfigProvider, Flex, Radio, theme } from "antd";
-import { AppContext } from "../AppContext";
+import { AppContext } from "@/AppContext";
 import { useContext } from "react";
-import { ThemeOption } from "../App";
+import { themeSettingOptions } from "@/theme";
+import { useMatches } from "react-router-dom";
 
-export default function Header({
-  themeSettingOptions,
-}: {
-  themeSettingOptions: ThemeOption[];
-}) {
+console.log("Header.tsx");
+
+export default function Header() {
+  console.log("Header()");
+
+  const matches = useMatches();
+  const title = matches[matches.length - 1]?.handle?.title || "Default Title";
+
   const appContext = useContext(AppContext);
 
   return (
@@ -21,22 +25,30 @@ export default function Header({
       }}
     >
       <header>
-        <h1>示例</h1>
-        {/* <span>zizaimai.space</span> */}
+        <Flex align="center" gap="0.5rem">
+          <span
+            className="material-icons"
+            style={{ fontSize: "2rem", color: "#dd774b" }}
+          >
+            code
+          </span>
+          <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: "unset" }}>
+            {title}
+          </h1>
+        </Flex>
         <Radio.Group
           optionType="button"
           buttonStyle="solid"
           value={appContext?.themeSetting}
           onChange={(v) => appContext?.setThemeSetting(v.target.value)}
-          style={{ marginRight: "4px" }}
         >
           {themeSettingOptions.map((theme) => (
             <Radio
               key={theme.id}
               value={theme.id}
               style={{
-                width: "2rem",
-                height: "2rem",
+                width: "2.2rem",
+                height: "2.2rem",
                 padding: "0",
               }}
             >
@@ -47,7 +59,7 @@ export default function Header({
               >
                 <span
                   className="material-icons"
-                  style={{ fontSize: "1.5rem", userSelect: "none" }}
+                  style={{ fontSize: "1.6rem", userSelect: "none" }}
                 >
                   {theme.icon}
                 </span>
