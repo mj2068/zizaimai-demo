@@ -4,13 +4,19 @@ import { useContext } from "react";
 import { themeSettingOptions } from "@/theme";
 import { useMatches } from "react-router-dom";
 
+interface HeaderHandle {
+  title?: string;
+}
+
 console.log("Header.tsx");
 
 export default function Header() {
   console.log("Header()");
 
   const matches = useMatches();
-  const title = matches[matches.length - 1]?.handle?.title || "Default Title";
+  const title =
+    (matches[matches.length - 1]?.handle as HeaderHandle | undefined)?.title ||
+    "Default Title";
 
   const appContext = useContext(AppContext);
 

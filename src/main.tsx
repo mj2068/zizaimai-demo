@@ -16,6 +16,7 @@ const router = createBrowserRouter(
       path: "/",
       element: <App />,
       errorElement: import.meta.env.PROD && <ErrorPage />,
+      // errorElement:  <ErrorPage />,
       children: [
         {
           index: true,

@@ -150,6 +150,7 @@ a.button [class|="material-icons"] {
 .tech-stack {
   display: flex;
   gap: 12px;
+  margin-top: 8px;
   margin-bottom: 16px;
 }
 
