@@ -13,9 +13,7 @@ const BackButton: React.FC = () => {
     <Button
       onClick={handleGoBack}
       icon={<span className="material-icons">arrow_back</span>}
-    >
-      Back
-    </Button>
+    ></Button>
   );
 };
 

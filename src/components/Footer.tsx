@@ -4,7 +4,7 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
   // console.log("render - Footer");
 
   return (
-    <footer className="small-text gray-text round-corner-4">
+    <footer className="small-text gray-text">
       <Flex vertical align="center">
         <Image
           className="image"

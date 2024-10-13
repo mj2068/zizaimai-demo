@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function useDebug() {
   const [showDebug, setShowDebug] = useState(
-    import.meta.env.DEV ? true : false,
+    import.meta.env.DEV && import.meta.env.VITE_SHOW_DEBUG ? true : false
   );
 
   function toggleDebug() {

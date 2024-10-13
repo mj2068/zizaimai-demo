@@ -32,11 +32,11 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
           onClick={handleClick}
           style={{
             position: "fixed",
-            bottom: "20px",
-            right: "20px",
+            bottom: "40px",
+            right: "40px",
             zIndex: 1000,
-            width: "40px",
-            height: "40px",
+            width: "48px",
+            height: "48px",
             backgroundColor: "#FFA500",
             color: "white",
             border: "none",

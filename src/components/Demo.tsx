@@ -1,9 +1,9 @@
 import { Flex } from "antd";
 import ProjectItem from "./ProjectItem";
-import { Link, useMatches } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { useContext } from "react";
-import { Tooltip } from 'antd';
+import { useContext, useEffect } from "react";
+import { Tooltip } from "antd";
 
 import IconVue from "~icons/logos/vue";
 import IconReact from "~icons/logos/react";
@@ -24,12 +24,16 @@ const iconMap = {
 };
 
 export default function Demo() {
-  console.log("Demo.tsx");
-
-  const matches = useMatches();
-  console.log(matches);
+  console.log("Demo()");
 
   const appContext = useContext(AppContext);
+
+  useEffect(() => {
+    console.log("Demo effect");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    return () => window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>
@@ -42,7 +46,7 @@ export default function Demo() {
             "previous_work/ph-detail-2.jpg",
             "previous_work/ph-classify-2.jpg",
           ]}
-          bgColors={{ light: "#d0e0b2", dark: "#373710" }}
+          bgColors={{ light: "#dbe5c5", dark: "#202f07" }}
         >
           <h3>植物小助手</h3>
           <i className="small-text">移动端App</i>
@@ -50,11 +54,11 @@ export default function Demo() {
             {["vue", "ionic", "capacitor"].map((tech) => {
               const Icon = iconMap[tech as keyof typeof iconMap];
               return Icon ? (
-                <Tooltip key={tech} title={tech.charAt(0).toUpperCase() + tech.slice(1)}>
-                  <Icon
-                    style={{ width: 32, height: 32 }}
-                    data-icon={tech}
-                  />
+                <Tooltip
+                  key={tech}
+                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
+                >
+                  <Icon style={{ width: 32, height: 32 }} data-icon={tech} />
                 </Tooltip>
               ) : null;
             })}
@@ -90,11 +94,18 @@ export default function Demo() {
             {["react", "threejs", "antd", "blender"].map((tech) => {
               const Icon = iconMap[tech as keyof typeof iconMap];
               return Icon ? (
-                <Tooltip key={tech} title={tech.charAt(0).toUpperCase() + tech.slice(1)}>
+                <Tooltip
+                  key={tech}
+                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
+                >
                   <Icon
                     style={{ width: 32, height: 32 }}
                     data-icon={tech}
-                    className={tech === 'threejs' && appContext?.theme === 'dark' ? 'dark' : ''}
+                    className={
+                      tech === "threejs" && appContext?.theme === "dark"
+                        ? "dark"
+                        : ""
+                    }
                   />
                 </Tooltip>
               ) : null;
@@ -127,11 +138,18 @@ export default function Demo() {
             {["react", "threejs", "blender"].map((tech) => {
               const Icon = iconMap[tech as keyof typeof iconMap];
               return Icon ? (
-                <Tooltip key={tech} title={tech.charAt(0).toUpperCase() + tech.slice(1)}>
+                <Tooltip
+                  key={tech}
+                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
+                >
                   <Icon
                     style={{ width: 32, height: 32 }}
                     data-icon={tech}
-                    className={tech === 'threejs' && appContext?.theme === 'dark' ? 'dark' : ''}
+                    className={
+                      tech === "threejs" && appContext?.theme === "dark"
+                        ? "dark"
+                        : ""
+                    }
                   />
                 </Tooltip>
               ) : null;
@@ -160,11 +178,18 @@ export default function Demo() {
             {["react", "threejs", "blender"].map((tech) => {
               const Icon = iconMap[tech as keyof typeof iconMap];
               return Icon ? (
-                <Tooltip key={tech} title={tech.charAt(0).toUpperCase() + tech.slice(1)}>
+                <Tooltip
+                  key={tech}
+                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
+                >
                   <Icon
                     style={{ width: 32, height: 32 }}
                     data-icon={tech}
-                    className={tech === 'threejs' && appContext?.theme === 'dark' ? 'dark' : ''}
+                    className={
+                      tech === "threejs" && appContext?.theme === "dark"
+                        ? "dark"
+                        : ""
+                    }
                   />
                 </Tooltip>
               ) : null;

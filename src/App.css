@@ -8,11 +8,10 @@
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   padding: 0 0.5rem;
-  height: 4rem;
   margin-bottom: 4rem;
 }
 
@@ -25,6 +24,8 @@ footer {
   background-color: var(--clr-secondary-bg);
   /* Use the secondary foreground color for text */
   color: var(--clr-secondary-fg);
+
+  border-radius: 4px 4px 0 0;
 }
 
 h1,

@@ -88,7 +88,7 @@ function App() {
         <Flex vertical>
           <Header />
 
-          <main style={{ alignSelf: "center" }}>
+          <main>
             <Outlet />
           </main>
         </Flex>

@@ -1,113 +1,207 @@
-import React from "react";
-import {
-  Typography,
-  Layout,
-  Card,
-  Carousel,
-  Image,
-  Space,
-  Divider,
-} from "antd";
-import { GithubOutlined } from "@ant-design/icons";
-import IconVue from '~icons/logos/vue';
-import IconIonic from '~icons/logos/ionic-icon';
-import IconCapacitor from '~icons/logos/capacitorjs-icon';
+import { Flex, Image } from "antd";
+import IconGithub from "~icons/logos/github-icon";
+import IconVue from "~icons/logos/vue";
+import IconIonic from "~icons/logos/ionic-icon";
+import IconCapacitor from "~icons/logos/capacitorjs-icon";
+import styles from "@/App.module.css";
+import { useContext } from "react";
+import { AppContext } from "@/AppContext";
 
-const { Title, Paragraph, Text } = Typography;
-const { Content } = Layout;
+const ProjectPlantHelper = () => {
+  const appContext = useContext(AppContext);
+  const isDark = appContext?.theme === "dark";
 
-const ProjectPlantHelper: React.FC = () => {
-  const screenshots = [
+  const images = [
     "ph-home-1.jpg",
-    "ph-detail-2.jpg",
-    "ph-add-1.jpg",
-    "ph-add-2.jpg",
     "ph-detail-1.jpg",
-    "ph-detail-3.jpg",
+    "ph-add-1.jpg",
     "ph-classify-1.jpg",
+    "ph-detail-2.jpg",
+    "ph-detail-3.jpg",
     "ph-classify-2.jpg",
+    "ph-add-2.jpg",
   ];
 
   return (
-    <Layout>
-      <Content
-        style={{ padding: "50px 50px 0", maxWidth: 800, margin: "0 auto" }}
+    <Flex
+      style={{
+        borderRadius: "8px",
+        backgroundColor: isDark ? "#202f07" : "#dbe5c5",
+      }}
+    >
+      <Flex
+        vertical
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          paddingTop: "4rem",
+          paddingBottom: "8rem",
+        }}
       >
-        <Card>
-          <Space direction="vertical" size="large" style={{ width: "100%" }}>
-            <Space align="center">
-              <Image
-                src={
-                  new URL(
-                    "/src/assets/previous_work/flow-plant-electronics-icon-square.svg",
-                    import.meta.url
-                  ).href
-                }
-                alt="Plant Helper Icon"
-                width={80}
-                preview={false}
-              />
-              <Title level={2} style={{ margin: 0 }}>
-                植物小助手
-              </Title>
-            </Space>
+        <div className={styles["text-container"]}>
+          <Image
+            src={
+              new URL(
+                "/src/assets/previous_work/flow-plant-electronics-icon-square.svg",
+                import.meta.url
+              ).href
+            }
+            alt="Plant Helper Icon"
+            preview={false}
+            style={{
+              width: "64px",
+              borderRadius: "16px",
+              boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.4)",
+            }}
+          />
 
-            <Paragraph>
-              <Text strong>植物小助手</Text>
-              是一款多平台App，旨在帮助用户管理小型植物或花卉。
-              <a
-                href="https://github.com/mj2068/plant-helper"
-                target="_blank"
-                rel="noopener noreferrer"
+          <p className={styles["large-text"]}>
+            植物小助手是一款使用物联网技术旨在帮助用户管理小型植物和花卉的多平台App。
+          </p>
+
+          <p className={styles["p-title"]}>技术介绍</p>
+          <span>
+            使用
+            <Flex gap={4} align="center" style={{ display: "inline-flex" }}>
+              <IconVue style={{ fontSize: "12px" }} />
+              Vue
+            </Flex>
+            作为开发主框架，
+            <Flex gap={4} align="center" style={{ display: "inline-flex" }}>
+              <IconIonic style={{ fontSize: "12px" }} />
+              Ionic
+            </Flex>
+            提供跨平台UI组件库，
+            <Flex gap={4} align="center" style={{ display: "inline-flex" }}>
+              <IconCapacitor style={{ fontSize: "12px" }} />
+              Capacitor
+            </Flex>
+            实现移动端本地化并生成程序包，此二者组合类似uniapp的开发模式。
+          </span>
+
+          <div style={{ marginTop: "1rem" }}>
+            <a
+              href="https://github.com/mj2068/plant-helper"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Flex
+                align="center"
+                gap={"0.25rem"}
+                style={{ display: "inline-flex" }}
               >
-                <GithubOutlined /> GitHub 仓库
-              </a>
-            </Paragraph>
+                <IconGithub style={{ filter: isDark ? "invert(1)" : "" }} />{" "}
+                仓库
+              </Flex>
+            </a>
+          </div>
+        </div>
 
-            <Carousel autoplay style={{ maxWidth: "100%", margin: "0 auto" }}>
-              {screenshots.map((img, index) => (
-                <div key={index} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                  <Image
-                    src={
-                      new URL(
-                        `/src/assets/previous_work/${img}`,
-                        import.meta.url
-                      ).href
-                    }
-                    alt={`Screenshot ${index + 1}`}
-                    style={{ maxWidth: "100%", maxHeight: "400px", objectFit: "contain" }}
-                  />
-                </div>
-              ))}
-            </Carousel>
+        <div className={styles["screenshots-container"]}>
+          <div style={{ gridArea: "a" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[0]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "b" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[1]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "c" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[2]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "d" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[3]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "e" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[4]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "f" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[5]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "g" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[6]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+          <div style={{ gridArea: "h" }}>
+            <Image
+              src={
+                new URL(
+                  `/src/assets/previous_work/${images[7]}`,
+                  import.meta.url
+                ).href
+              }
+              style={{}}
+            />
+          </div>
+        </div>
 
-            <Space direction="vertical">
-              <Title level={4}>主要功能</Title>
-              <ul>
-                <li>增减植物条目，记录信息或添加照片</li>
-                <li>通过天气API展示历史天气数据，协助用户判断植物状态</li>
-                <li>基于百度AI开放平台的植物图像识别</li>
-                <li>计划中：配套智能硬件，可插入土壤实现智能监控（开发中）</li>
-              </ul>
-            </Space>
-
-            <Divider />
-
-            <Space direction="vertical">
-              <Title level={4}>技术栈</Title>
-              <Space wrap>
-                <IconVue style={{ fontSize: "16px" }} />
-                <IconIonic style={{ fontSize: "16px" }} />
-                <IconCapacitor style={{ fontSize: "16px" }} />
-              </Space>
-              <Paragraph>
-                界面由Vue框架配合Ionic实现，Capacitor用于生成移动端程序包。
-              </Paragraph>
-            </Space>
-          </Space>
-        </Card>
-      </Content>
-    </Layout>
+        <div className={styles["text-container"]}>
+          <p className={styles["p-title"]}>主要功能</p>
+          <ul>
+            <li>增减植物条目，记录信息，添加照片</li>
+            <li>通过天气API展示天气相关数据</li>
+            <li>存储各项历史数据以及数据图表</li>
+            <li>基于百度AI开放平台的植物图像识别</li>
+          </ul>
+          <i>
+            * 本项目的硬件部分为一个插入土壤的物联网设备，由第三方团队开发。
+          </i>
+        </div>
+      </Flex>
+    </Flex>
   );
 };
 

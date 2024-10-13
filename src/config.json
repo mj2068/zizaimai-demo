@@ -1,6 +1,9 @@
 {
-  "plantHelper": {
-    "mainColor": "#000000",
-    "accentColor": "#ffffff"
+  "projects": {
+    "plantHelper": {
+      "themeDarkColor": "#000000",
+      "themeLightColor": "#ffffff",
+      "accentColor": "#ffffff"
+    }
   }
 }
