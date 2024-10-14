@@ -12,6 +12,7 @@ import IconCapacitor from "~icons/logos/capacitorjs-icon";
 import IconThreejs from "~icons/logos/threejs";
 import IconAntd from "~icons/logos/ant-design";
 import IconBlender from "~icons/logos/blender";
+import { bgColors } from "@/theme";
 
 const iconMap = {
   vue: IconVue,
@@ -41,12 +42,33 @@ export default function Demo() {
 
       <Flex vertical gap="2rem">
         <ProjectItem
+          bgColors={bgColors.bzPrtc}
+          imageFiles="previous_work/bzprtc/screenv2.jpg"
+        >
+          <h3>滨州市公共资源交易中心信息发布屏系统</h3>
+          <i className="small-text">集成项目</i>
+
+          <p>
+            信息发布系统对资源交易中心当日项目、已授权评委人员信息及签到情况进行实时刷新，循环滚动显示。
+          </p>
+          <div className="button-container">
+            <Link
+              className="button"
+              to="/bzprtc"
+              style={{ backgroundColor: "#1182e9", padding: "0.5rem 1rem" }}
+            >
+              开发说明
+            </Link>
+          </div>
+        </ProjectItem>
+
+        <ProjectItem
           imageFiles={[
             "previous_work/ph-home-1.jpg",
             "previous_work/ph-detail-2.jpg",
             "previous_work/ph-classify-2.jpg",
           ]}
-          bgColors={{ light: "#dbe5c5", dark: "#202f07" }}
+          bgColors={bgColors.plantHelper}
           isImageFirst={true}
         >
           <h3>植物小助手</h3>
@@ -87,7 +109,7 @@ export default function Demo() {
       <Flex vertical gap="4rem">
         <ProjectItem
           imageFiles="app_render.jpg"
-          bgColors={{ light: "#999fbb", dark: "#090f21" }}
+          bgColors={bgColors.fittingRoom}
         >
           <h3>3D换装试衣间</h3>
           <i className="small-text">设计适配PC浏览器</i>
@@ -131,7 +153,7 @@ export default function Demo() {
         <ProjectItem
           imageFiles="myster-door_banner_confetti.png"
           isImageFirst={true}
-          bgColors={{ light: "#ffcfc8", dark: "#311003" }}
+          bgColors={bgColors.mysteryDoor}
         >
           <h3>奇异门动画入口页面</h3>
           <i className="small-text">设计适配竖屏布局</i>

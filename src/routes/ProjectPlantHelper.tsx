@@ -6,6 +6,9 @@ import IconCapacitor from "~icons/logos/capacitorjs-icon";
 import styles from "@/App.module.css";
 import { useContext } from "react";
 import { AppContext } from "@/AppContext";
+import { bgColors } from "@/theme";
+
+const bgColor = bgColors.plantHelper;
 
 const ProjectPlantHelper = () => {
   const appContext = useContext(AppContext);
@@ -26,7 +29,7 @@ const ProjectPlantHelper = () => {
     <Flex
       style={{
         borderRadius: "8px",
-        backgroundColor: isDark ? "#202f07" : "#dbe5c5",
+        backgroundColor: isDark ? bgColor.dark : bgColor.light,
       }}
     >
       <Flex
@@ -192,8 +195,9 @@ const ProjectPlantHelper = () => {
           <p className={styles["p-title"]}>主要功能</p>
           <ul>
             <li>增减植物条目，记录信息，添加照片</li>
+            <li>实时显示传感器的各项数据，如，湿度、肥力等</li>
+            <li>记录存储各项数据并显示时间线数据图表</li>
             <li>通过天气API展示天气相关数据</li>
-            <li>存储各项历史数据以及数据图表</li>
             <li>基于百度AI开放平台的植物图像识别</li>
           </ul>
           <i>

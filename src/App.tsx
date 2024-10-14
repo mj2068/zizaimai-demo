@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-console.log("App.tsx");
+import.meta.env.DEV && console.log("App.tsx");
 
 function App() {
   import.meta.env.DEV && console.log("App()");
@@ -32,7 +32,7 @@ function App() {
       delete window.toggleDebug;
     };
   }, [toggleDebug]);
-  
+
   const matches = useMatches();
   import.meta.env.DEV && console.log(matches);
 

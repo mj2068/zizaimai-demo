@@ -9,6 +9,26 @@ import ErrorPage from "./ErrorPage";
 import App from "./App";
 import ProjectPlantHelper from "./routes/ProjectPlantHelper";
 import Demo from "./components/Demo";
+import ProjectBzPrtc from "./routes/ProjectBzPrtc";
+
+function BackButton() {
+  return (
+    <Link to="/">
+      <Button
+        style={{
+          border: "none",
+          background: "none",
+          boxShadow: "none",
+          borderRadius: "50% 50%",
+          width: "2.5rem",
+          height: "2.5rem",
+        }}
+      >
+        <span className="material-icons">arrow_back</span>
+      </Button>
+    </Link>
+  );
+}
 
 const router = createBrowserRouter(
   [
@@ -28,22 +48,15 @@ const router = createBrowserRouter(
           element: <ProjectPlantHelper />,
           handle: {
             title: "植物小助手",
-            icon: (
-              <Link to="/">
-                <Button
-                  style={{
-                    border: "none",
-                    background: "none",
-                    boxShadow: "none",
-                    borderRadius: "50% 50%",
-                    width: "2.5rem",
-                    height: "2.5rem",
-                  }}
-                >
-                  <span className="material-icons">arrow_back</span>
-                </Button>
-              </Link>
-            ),
+            icon: <BackButton />,
+          },
+        },
+        {
+          path: "bzprtc",
+          element: <ProjectBzPrtc />,
+          handle: {
+            title: "资源交易中心信息发布屏",
+            icon: <BackButton />,
           },
         },
       ],

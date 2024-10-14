@@ -1,6 +1,6 @@
 import { ConfigProvider, Flex, Radio, theme } from "antd";
 import { AppContext } from "@/AppContext";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { themeSettingOptions } from "@/theme";
 import { useMatches } from "react-router-dom";
 
@@ -9,10 +9,10 @@ interface HeaderHandle {
   icon?: React.ReactNode;
 }
 
-console.log("Header.tsx");
+import.meta.env.DEV && console.log("Header.tsx");
 
 export default function Header() {
-  console.log("Header()");
+  import.meta.env.DEV && console.log("Header()");
 
   const matches = useMatches();
   const title =
@@ -44,15 +44,21 @@ export default function Header() {
         <Flex justify="space-between" align="center" style={{ height: "4rem" }}>
           <Flex align="center" gap="0.5rem">
             {icon}
-            <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: "unset" }}>
+            <h1
+              className={`header-title${
+                title.length > 6 ? " longer-6" : ""
+              }`}
+            >
               {title}
             </h1>
           </Flex>
+
           <Radio.Group
             optionType="button"
             buttonStyle="solid"
             value={appContext?.themeSetting}
             onChange={(v) => appContext?.setThemeSetting(v.target.value)}
+            style={{ flexShrink: 0 }}
           >
             {themeSettingOptions.map((theme) => (
               <Radio
