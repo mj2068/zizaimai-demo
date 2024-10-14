@@ -65,6 +65,7 @@ export default function ProjectItem({
           src={new URL(`/src/assets/${imageFiles}`, import.meta.url).href}
         />
       )}
+
       {import.meta.env.DEV && extractedColors.length > 0 && (
         <Flex
           style={{

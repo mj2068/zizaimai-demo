@@ -24,12 +24,12 @@ const iconMap = {
 };
 
 export default function Demo() {
-  console.log("Demo()");
+  import.meta.env.DEV && console.log("Demo()");
 
   const appContext = useContext(AppContext);
 
   useEffect(() => {
-    console.log("Demo effect");
+    import.meta.env.DEV && console.log("Demo effect");
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     return () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -47,6 +47,7 @@ export default function Demo() {
             "previous_work/ph-classify-2.jpg",
           ]}
           bgColors={{ light: "#dbe5c5", dark: "#202f07" }}
+          isImageFirst={true}
         >
           <h3>植物小助手</h3>
           <i className="small-text">移动端App</i>

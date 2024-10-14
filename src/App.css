@@ -16,16 +16,8 @@ header {
 }
 
 footer {
-  margin-top: 12rem;
-  padding-top: 4rem;
-  padding-bottom: 0.25rem;
-
-  /* Use the secondary background color */
-  background-color: var(--clr-secondary-bg);
-  /* Use the secondary foreground color for text */
-  color: var(--clr-secondary-fg);
-
-  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 h1,

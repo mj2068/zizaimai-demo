@@ -1,11 +1,24 @@
 import { Flex, Image } from "antd";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
-  // console.log("render - Footer");
+  import.meta.env.DEV && console.log("render - Footer");
 
   return (
     <footer className="small-text gray-text">
-      <Flex vertical align="center">
+      <Flex
+        vertical
+        align="center"
+        style={{
+          maxWidth: "40rem",
+          backgroundColor: "var(--clr-secondary-bg)",
+          color: "var(--clr-secondary-fg)",
+          marginTop: "12rem",
+          paddingTop: "4rem",
+          paddingBottom: "0.25rem",
+          borderRadius: "16px 16px 0 0",
+          flexGrow: 1,
+        }}
+      >
         <Image
           className="image"
           src={new URL("/src/assets/wechat_qr.png", import.meta.url).href}

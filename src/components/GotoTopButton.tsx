@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import IconArrowUp from '~icons/mdi/arrow-up';
+import React, { useState, useEffect, useContext } from "react";
+import IconArrowUp from "~icons/mdi/arrow-up";
+import { AppContext } from "@/AppContext";
 
 interface GotoTopButtonProps {
   showBelow?: number;
@@ -7,6 +8,7 @@ interface GotoTopButtonProps {
 
 const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
   const [show, setShow] = useState(false);
+  const appContext = useContext(AppContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,11 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const shadowColor =
+    appContext?.theme === "dark"
+      ? "rgba(255, 255, 255, 0.2)"
+      : "rgba(0, 0, 0, 0.2)";
 
   return (
     <>
@@ -46,6 +53,7 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
             justifyContent: "center",
             alignItems: "center",
             fontSize: "24px",
+            boxShadow: `0 2px 5px ${shadowColor}`,
           }}
         >
           <IconArrowUp />
