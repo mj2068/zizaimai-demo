@@ -1,9 +1,9 @@
-import { Flex } from "antd";
-import ProjectItem from "./ProjectItem";
-import { Link } from "react-router-dom";
-import { AppContext } from "../AppContext";
 import { useContext, useEffect } from "react";
-import { Tooltip } from "antd";
+import { Link } from "react-router-dom";
+import { Flex, Tooltip } from "antd";
+import ProjectItem from "./ProjectItem";
+import { AppContext } from "../AppContext";
+import { bgColors } from "@/theme";
 
 import IconVue from "~icons/logos/vue";
 import IconReact from "~icons/logos/react";
@@ -12,7 +12,7 @@ import IconCapacitor from "~icons/logos/capacitorjs-icon";
 import IconThreejs from "~icons/logos/threejs";
 import IconAntd from "~icons/logos/ant-design";
 import IconBlender from "~icons/logos/blender";
-import { bgColors } from "@/theme";
+import IconPlay from "~icons/mdi/play";
 
 const iconMap = {
   vue: IconVue,
@@ -55,9 +55,9 @@ export default function Demo() {
             <Link
               className="button"
               to="/bzprtc"
-              style={{ backgroundColor: "#1182e9", padding: "0.5rem 1rem" }}
+              style={{ backgroundColor: "#1182e9" }}
             >
-              开发说明
+              <span>开发说明</span>
             </Link>
           </div>
         </ProjectItem>
@@ -96,9 +96,9 @@ export default function Demo() {
             <Link
               className="button"
               to="/plant-helper"
-              style={{ backgroundColor: "#d25d0f", padding: "0.5rem 1rem" }}
+              style={{ backgroundColor: "#d25d0f" }}
             >
-              开发说明
+              <span>开发说明</span>
             </Link>
           </div>
         </ProjectItem>
@@ -140,11 +140,11 @@ export default function Demo() {
           </p>
           <div className="button-container">
             <a
-              className="button"
+              className="button with-icon"
               href="fitting-room"
-              style={{ backgroundColor: "#8360c3" }}
+              style={{ backgroundColor: "#8360c3", verticalAlign: "top" }}
             >
-              <span className="material-icons-round">play_arrow</span>
+              <IconPlay className="icon" />
               示例 + 开发说明
             </a>
           </div>
@@ -181,11 +181,11 @@ export default function Demo() {
           <p>为移动端开发的竖屏卡通风交互动画欢迎页面。</p>
           <div className="button-container">
             <a
-              className="button"
+              className="button with-icon"
               href="mystery-door"
               style={{ backgroundColor: "#c53f26" }}
             >
-              <span className="material-icons-round">play_arrow</span>
+              <IconPlay className="icon" />
               示例
             </a>
           </div>
@@ -226,11 +226,11 @@ export default function Demo() {
           </p>
           <div className="button-container">
             <a
-              className="button"
+              className="button with-icon"
               href="room-scene"
               style={{ backgroundColor: "#526638" }}
             >
-              <span className="material-icons-round">play_arrow</span>
+              <IconPlay className="icon" />
               示例 + 开发说明
             </a>
           </div>

@@ -1,13 +1,24 @@
 import { ConfigProvider, Flex, Radio, theme } from "antd";
 import { AppContext } from "@/AppContext";
-import React, { useContext } from "react";
+import React, { CSSProperties, useContext } from "react";
 import { themeSettingOptions } from "@/theme";
 import { useMatches } from "react-router-dom";
+import IconCodeTags from "~icons/mdi/code-tags";
+import IconCog from "~icons/mdi/cog";
+import IconWhiteBalanceSunny from "~icons/mdi/white-balance-sunny";
+import IconWeatherNight from "~icons/mdi/weather-night";
 
 interface HeaderHandle {
   title?: string;
   icon?: React.ReactNode;
 }
+
+const iconStyle: CSSProperties = { fontSize: "1.2rem" };
+const Icons = {
+  system: <IconCog style={iconStyle} />,
+  light: <IconWhiteBalanceSunny style={iconStyle} />,
+  dark: <IconWeatherNight style={iconStyle} />,
+};
 
 import.meta.env.DEV && console.log("Header.tsx");
 
@@ -20,14 +31,7 @@ export default function Header() {
     "自在麦";
 
   const icon = (matches[matches.length - 1]?.handle as HeaderHandle | undefined)
-    ?.icon || (
-    <span
-      className="material-icons"
-      style={{ fontSize: "2rem", color: "#dd774b" }}
-    >
-      code
-    </span>
-  );
+    ?.icon || <IconCodeTags style={{ fontSize: "2rem", color: "#dd774b" }} />;
   const appContext = useContext(AppContext);
 
   return (
@@ -45,9 +49,7 @@ export default function Header() {
           <Flex align="center" gap="0.5rem">
             {icon}
             <h1
-              className={`header-title${
-                title.length > 6 ? " longer-6" : ""
-              }`}
+              className={`header-title${title.length > 6 ? " longer-6" : ""}`}
             >
               {title}
             </h1>
@@ -75,12 +77,7 @@ export default function Header() {
                   justify="center"
                   align="center"
                 >
-                  <span
-                    className="material-icons"
-                    style={{ fontSize: "1.6rem", userSelect: "none" }}
-                  >
-                    {theme.icon}
-                  </span>
+                  {Icons[theme.id]}
                 </Flex>
               </Radio>
             ))}

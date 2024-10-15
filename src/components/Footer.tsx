@@ -1,7 +1,8 @@
 import { Flex, Image } from "antd";
+import IconEmail from "~icons/mdi/email";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
-  import.meta.env.DEV && console.log("render - Footer");
+  import.meta.env.DEV && console.log("Footer()");
 
   return (
     <footer className="small-text gray-text">
@@ -27,10 +28,8 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
           width={96}
         />
 
-        <Flex align="center" gap="0.25rem">
-          <span className="material-icons" style={{ fontSize: "1rem" }}>
-            email
-          </span>
+        <Flex align="flex-end" gap="0.25rem">
+          <IconEmail style={{ fontSize: "0.8rem" }} />
           <a className="grey-text" href="mailto:yuelianghushenfu@sina.com">
             yuelianghushenfu@sina.com
           </a>

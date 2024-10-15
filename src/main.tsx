@@ -3,13 +3,13 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { Button, ConfigProvider } from "antd";
 import zhCN from "antd/locale/zh_CN";
-import "material-icons/iconfont/material-icons.css";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import App from "./App";
 import ProjectPlantHelper from "./routes/ProjectPlantHelper";
 import Demo from "./components/Demo";
 import ProjectBzPrtc from "./routes/ProjectBzPrtc";
+import IconArrowLeft from "~icons/mdi/arrow-left";
 
 function BackButton() {
   return (
@@ -19,12 +19,11 @@ function BackButton() {
           border: "none",
           background: "none",
           boxShadow: "none",
-          borderRadius: "50% 50%",
-          width: "2.5rem",
-          height: "2.5rem",
+          padding: "0",
+          verticalAlign: "middle",
         }}
       >
-        <span className="material-icons">arrow_back</span>
+        <IconArrowLeft style={{ fontSize: "2rem" }} />
       </Button>
     </Link>
   );
@@ -35,8 +34,8 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <App />,
-      errorElement: import.meta.env.PROD && <ErrorPage />,
-      // errorElement:  <ErrorPage />,
+      // errorElement: import.meta.env.PROD && <ErrorPage />,
+      errorElement:  <ErrorPage />,
       children: [
         {
           index: true,

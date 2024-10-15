@@ -1,3 +1,10 @@
+.prtc-project-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 8rem;
+}
+
 .prtc-flow-container {
   & div.prtc-step-box {
     border: 1px solid;
@@ -11,6 +18,9 @@
 }
 
 @media (min-width: 768px) {
+  .prtc-project-container {
+    padding-top: 4rem;
+  }
   .prtc-project-header-container {
     flex-direction: row;
   }
@@ -23,7 +33,7 @@
   }
 }
 
-.prtc-project-content-container i {
+.prtc-project-container i {
   color: grey;
 }
 
