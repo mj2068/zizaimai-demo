@@ -29,7 +29,7 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
 
   const shadowColor =
     appContext?.theme === "dark"
-      ? "rgba(255, 255, 255, 0.2)"
+      ? "rgba(255, 255, 128, 0.3)"
       : "rgba(0, 0, 0, 0.2)";
 
   return (
@@ -44,7 +44,7 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
             zIndex: 1000,
             width: "48px",
             height: "48px",
-            backgroundColor: "#FFA500",
+            backgroundColor: "#dd774b",
             color: "white",
             border: "none",
             borderRadius: "50%",

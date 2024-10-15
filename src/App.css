@@ -143,18 +143,16 @@ a.button:focus {
   margin-bottom: 16px;
 }
 
-.tech-stack svg {
-  width: 32px;
-  height: 32px;
+.tech-stack .icon {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* If you still want to brighten the threejs icon */
-.tech-stack svg[data-icon="threejs"] {
+.tech-stack .icon[data-icon="threejs"] {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3)) brightness(1.2);
 }
 
-.tech-stack svg[data-icon="threejs"].dark {
+.tech-stack .icon[data-icon="threejs"].dark {
   filter: invert(1);
 }
 

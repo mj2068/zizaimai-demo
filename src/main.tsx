@@ -23,7 +23,7 @@ function BackButton() {
           verticalAlign: "middle",
         }}
       >
-        <IconArrowLeft style={{ fontSize: "2rem" }} />
+        <IconArrowLeft style={{ fontSize: "1.5rem" }} />
       </Button>
     </Link>
   );
@@ -34,8 +34,8 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <App />,
-      // errorElement: import.meta.env.PROD && <ErrorPage />,
-      errorElement:  <ErrorPage />,
+      errorElement: import.meta.env.PROD && <ErrorPage />,
+      // errorElement:  <ErrorPage />,
       children: [
         {
           index: true,

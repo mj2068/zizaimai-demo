@@ -4,9 +4,9 @@ import React, { CSSProperties, useContext } from "react";
 import { themeSettingOptions } from "@/theme";
 import { useMatches } from "react-router-dom";
 import IconCodeTags from "~icons/mdi/code-tags";
-import IconCog from "~icons/mdi/cog";
-import IconWhiteBalanceSunny from "~icons/mdi/white-balance-sunny";
-import IconWeatherNight from "~icons/mdi/weather-night";
+import IconDarkModeRounded from "~icons/material-symbols/dark-mode-rounded";
+import IconLightModeRounded from "~icons/material-symbols/light-mode-rounded";
+import IconSettingsRounded from "~icons/material-symbols/settings-rounded";
 
 interface HeaderHandle {
   title?: string;
@@ -15,9 +15,9 @@ interface HeaderHandle {
 
 const iconStyle: CSSProperties = { fontSize: "1.2rem" };
 const Icons = {
-  system: <IconCog style={iconStyle} />,
-  light: <IconWhiteBalanceSunny style={iconStyle} />,
-  dark: <IconWeatherNight style={iconStyle} />,
+  system: <IconSettingsRounded style={iconStyle} />,
+  light: <IconLightModeRounded style={iconStyle} />,
+  dark: <IconDarkModeRounded style={iconStyle} />,
 };
 
 import.meta.env.DEV && console.log("Header.tsx");

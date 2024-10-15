@@ -1,7 +1,7 @@
 import { Flex } from "antd";
 import { Link, useRouteError, isRouteErrorResponse } from "react-router-dom";
 import IconArrowLeft from "~icons/mdi/arrow-left";
-import IconEmotionSad from "~icons/mdi/emoticon-sad";
+import IconHeartBrokenRounded from "~icons/material-symbols/heart-broken-rounded";
 
 interface ErrorResponse {
   status?: number;
@@ -28,7 +28,9 @@ export default function ErrorPage() {
 
   return (
     <Flex vertical align="center" justify="center" style={{ height: "100vh" }}>
-      <IconEmotionSad style={{ fontSize: "3rem", color: "red", marginBottom: "1rem" }} />
+      <IconHeartBrokenRounded
+        style={{ fontSize: "3rem", color: "red", marginBottom: "1rem" }}
+      />
       <h1>{errorStatus}</h1>
       <h2>{errorStatusText}</h2>
       {errorMessage !== errorStatusText && <p>{errorMessage}</p>}

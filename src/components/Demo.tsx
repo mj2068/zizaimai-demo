@@ -1,33 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Flex, Tooltip } from "antd";
+import { Flex } from "antd";
 import ProjectItem from "./ProjectItem";
-import { AppContext } from "../AppContext";
 import { bgColors } from "@/theme";
-
-import IconVue from "~icons/logos/vue";
-import IconReact from "~icons/logos/react";
-import IconIonic from "~icons/logos/ionic-icon";
-import IconCapacitor from "~icons/logos/capacitorjs-icon";
-import IconThreejs from "~icons/logos/threejs";
-import IconAntd from "~icons/logos/ant-design";
-import IconBlender from "~icons/logos/blender";
-import IconPlay from "~icons/mdi/play";
-
-const iconMap = {
-  vue: IconVue,
-  react: IconReact,
-  ionic: IconIonic,
-  capacitor: IconCapacitor,
-  threejs: IconThreejs,
-  antd: IconAntd,
-  blender: IconBlender,
-};
+import IconPlayArrowRounded from "~icons/material-symbols/play-arrow-rounded";
+import IconSet from "./IconSet";
 
 export default function Demo() {
   import.meta.env.DEV && console.log("Demo()");
-
-  const appContext = useContext(AppContext);
 
   useEffect(() => {
     import.meta.env.DEV && console.log("Demo effect");
@@ -73,19 +53,10 @@ export default function Demo() {
         >
           <h3>植物小助手</h3>
           <i className="small-text">移动端App</i>
-          <div className="tech-stack">
-            {["vue", "ionic", "capacitor"].map((tech) => {
-              const Icon = iconMap[tech as keyof typeof iconMap];
-              return Icon ? (
-                <Tooltip
-                  key={tech}
-                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
-                >
-                  <Icon style={{ width: 32, height: 32 }} data-icon={tech} />
-                </Tooltip>
-              ) : null;
-            })}
-          </div>
+          <IconSet
+            className="tech-stack"
+            icons={["vue", "ionic", "capacitor"]}
+          />
           <p>
             使用基于Vue的Ionic和Capacitor框架生态（类似uniapp流程）开发的移动端App。
           </p>
@@ -113,27 +84,10 @@ export default function Demo() {
         >
           <h3>3D换装试衣间</h3>
           <i className="small-text">设计适配PC浏览器</i>
-          <div className="tech-stack">
-            {["react", "threejs", "antd", "blender"].map((tech) => {
-              const Icon = iconMap[tech as keyof typeof iconMap];
-              return Icon ? (
-                <Tooltip
-                  key={tech}
-                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
-                >
-                  <Icon
-                    style={{ width: 32, height: 32 }}
-                    data-icon={tech}
-                    className={
-                      tech === "threejs" && appContext?.theme === "dark"
-                        ? "dark"
-                        : ""
-                    }
-                  />
-                </Tooltip>
-              ) : null;
-            })}
-          </div>
+          <IconSet
+            className="tech-stack"
+            icons={["react", "threejs", "antd", "blender"]}
+          />
           <p>
             本示例实现了DOM元素和WebGL
             3D场景之间的无缝交互，可以根据用户的不同选择实时将相应的3D模型搭配展示出来，在视觉上直观的帮助用户更好的选择相应的物品。
@@ -144,7 +98,7 @@ export default function Demo() {
               href="fitting-room"
               style={{ backgroundColor: "#8360c3", verticalAlign: "top" }}
             >
-              <IconPlay className="icon" />
+              <IconPlayArrowRounded className="icon" />
               示例 + 开发说明
             </a>
           </div>
@@ -157,27 +111,10 @@ export default function Demo() {
         >
           <h3>奇异门动画入口页面</h3>
           <i className="small-text">设计适配竖屏布局</i>
-          <div className="tech-stack">
-            {["react", "threejs", "blender"].map((tech) => {
-              const Icon = iconMap[tech as keyof typeof iconMap];
-              return Icon ? (
-                <Tooltip
-                  key={tech}
-                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
-                >
-                  <Icon
-                    style={{ width: 32, height: 32 }}
-                    data-icon={tech}
-                    className={
-                      tech === "threejs" && appContext?.theme === "dark"
-                        ? "dark"
-                        : ""
-                    }
-                  />
-                </Tooltip>
-              ) : null;
-            })}
-          </div>
+          <IconSet
+            className="tech-stack"
+            icons={["react", "threejs", "blender"]}
+          />
           <p>为移动端开发的竖屏卡通风交互动画欢迎页面。</p>
           <div className="button-container">
             <a
@@ -185,7 +122,7 @@ export default function Demo() {
               href="mystery-door"
               style={{ backgroundColor: "#c53f26" }}
             >
-              <IconPlay className="icon" />
+              <IconPlayArrowRounded className="icon" />
               示例
             </a>
           </div>
@@ -197,27 +134,10 @@ export default function Demo() {
         >
           <h3>日式室内场景</h3>
           <i className="small-text">设计适配PC浏览器</i>
-          <div className="tech-stack">
-            {["react", "threejs", "blender"].map((tech) => {
-              const Icon = iconMap[tech as keyof typeof iconMap];
-              return Icon ? (
-                <Tooltip
-                  key={tech}
-                  title={tech.charAt(0).toUpperCase() + tech.slice(1)}
-                >
-                  <Icon
-                    style={{ width: 32, height: 32 }}
-                    data-icon={tech}
-                    className={
-                      tech === "threejs" && appContext?.theme === "dark"
-                        ? "dark"
-                        : ""
-                    }
-                  />
-                </Tooltip>
-              ) : null;
-            })}
-          </div>
+          <IconSet
+            className="tech-stack"
+            icons={["react", "threejs", "blender"]}
+          />
           <p>
             本示例旨在对设备渲染性能进行简易测试。查看WebGL在展现复杂完整、多边形较多以及后处理效果较多的场景时的表现。
           </p>
@@ -230,7 +150,7 @@ export default function Demo() {
               href="room-scene"
               style={{ backgroundColor: "#526638" }}
             >
-              <IconPlay className="icon" />
+              <IconPlayArrowRounded className="icon" />
               示例 + 开发说明
             </a>
           </div>
