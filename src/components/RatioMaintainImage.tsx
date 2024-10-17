@@ -1,11 +1,13 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, CSSProperties } from "react";
 
 export default function RatioMaintainImage({
   img1,
   img2,
+  gap,
 }: {
   img1: string;
   img2: string;
+  gap?: CSSProperties["gap"];
 }) {
   const refContainer = useRef<HTMLDivElement>(null);
   const refImg1 = useRef<HTMLImageElement>(null);
@@ -17,13 +19,13 @@ export default function RatioMaintainImage({
   useEffect(() => {
     if (!refContainer.current || !refImg1.current || !refImg2.current) return;
 
-    function onImgsLoad() {
-      if (!refContainer.current || !refImg1.current || !refImg2.current) return;
+    const img1 = refImg1.current;
+    const img2 = refImg2.current;
+    const container = refContainer.current;
 
-      const img1 = refImg1.current;
-      const img2 = refImg2.current;
+    function onImgsLoad() {
       if (img1.complete && img2.complete) {
-        const containerWidth = refContainer.current.clientWidth;
+        const containerWidth = container.clientWidth;
         console.log(`containerWidth: ${containerWidth}`);
         console.log(img1.naturalWidth, img1.naturalHeight);
         console.log(img2.naturalWidth, img2.naturalHeight);
@@ -40,17 +42,17 @@ export default function RatioMaintainImage({
       }
     }
 
-    refImg1.current.addEventListener("load", onImgsLoad);
-    refImg2.current.addEventListener("load", onImgsLoad);
+    img1.addEventListener("load", onImgsLoad);
+    img2.addEventListener("load", onImgsLoad);
 
     return () => {
-      refImg1.current?.removeEventListener("load", onImgsLoad);
-      refImg2.current?.removeEventListener("load", onImgsLoad);
+      img1.removeEventListener("load", onImgsLoad);
+      img2.removeEventListener("load", onImgsLoad);
     };
   }, []);
 
   return (
-    <div ref={refContainer} style={{ display: "flex", gap: "2rem" }}>
+    <div ref={refContainer} style={{ display: "flex", gap }}>
       <div style={{ flex: ratio1 }}>
         <img
           ref={refImg1}
@@ -64,7 +66,7 @@ export default function RatioMaintainImage({
           }}
         />
       </div>
-      <div style={{ flex: ratio2, backgroundColor: "blue" }}>
+      <div style={{ flex: ratio2 }}>
         <img
           ref={refImg2}
           src={img2}

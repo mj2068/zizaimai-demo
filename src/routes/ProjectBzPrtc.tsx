@@ -10,9 +10,9 @@ import { AppContext } from "@/AppContext";
 
 import "./ProjectBzPrtc.css";
 import classes from "@/App.module.css";
-import { bgColors } from "@/theme";
+import { projectBgColors } from "@/theme";
 
-const bgColor = bgColors.bzPrtc;
+const bgColor = projectBgColors.bzPrtc;
 
 const ProjectBzPrtc: React.FC = () => {
   const appContext = useContext(AppContext);
@@ -50,7 +50,7 @@ const ProjectBzPrtc: React.FC = () => {
           </Flex>
           <div className={classes["text-container"]} style={{ flex: "3" }}>
             <p>
-              本项目是滨州市公共资源交易中心专家通道安检及智能门禁系统的一部分。该系统通过人脸识别或者身份证件识别的方式确认当前人员身份，并根据项目系统数据库接口判断是否授权放行进入评标现场。
+              本项目是资源交易中心专家通道安检及智能门禁系统的一部分。通过人脸或身份证件识别的方式确认人员身份，并根据项目系统数据库接口判断是否授权放行进入评标现场。
             </p>
             <p>
               信息发布屏对当日项目、已授权评委人员信息及出勤情况进行循环滚动显示，公开公示接受监督。
@@ -80,15 +80,17 @@ const ProjectBzPrtc: React.FC = () => {
               alt="版本更新过一次，此为第一版"
               height={240}
             />
-            <i className="small-text">版本更新过一次，此为第一版</i>
+            <i className="small-text">版本更新一次，图为第一版</i>
           </Flex>
         </Flex>
         <div className={classes["text-container"]}>
           <p className={classes["p-title"]}>项目介绍：</p>
           <p>
-            我方为该项目的实施乙方，开发了信息发布屏公示系统并提供维护。委托海康威视公司完成对服务器配套平台的开发与部署，并采购海康部分配套硬件。
+            我方为该集成项目的实施乙方，包含智能安检门（可检测人员是否携带禁入电子设备）的安装，通道闸机及身份识别设备的安装，开发信息发布屏公示系统。
           </p>
-
+          <p>
+            我方委托海康威视公司完成对服务器配套平台的开发与部署，并采购海康部分配套硬件。
+          </p>
           <p className={classes["p-title"]}>业务流程：</p>
           <Flex
             vertical
@@ -109,17 +111,17 @@ const ProjectBzPrtc: React.FC = () => {
 
           <p className={classes["p-title"]}>应用技术：</p>
           <span className="prtc-tech-stack">
-            海康威视使用 Java
+            我方使用
+            <Flex gap={"0.25rem"}>
+              <IconAngular />
+              Angular
+            </Flex>
+            框架开发前端。海康威视使用Java
             <Flex gap={"0.25rem"}>
               <IconSpringBoot />
               Spring
             </Flex>
-            框架开发服务器后端。我方使用
-            <Flex gap={"0.25rem"}>
-              <IconAngular />
-              AngularJS
-            </Flex>
-            框架开发前端。
+            框架开发服务器后端。
           </span>
         </div>
       </Flex>

@@ -16,10 +16,10 @@ declare global {
   }
 }
 
-import.meta.env.DEV && console.log("App.tsx");
+if (import.meta.env.DEV) console.log("App.tsx");
 
 function App() {
-  import.meta.env.DEV && console.log("App()");
+  if (import.meta.env.DEV) console.log("App()");
 
   /* ************ debug ************ */
   const { showDebug, toggleDebug } = useDebug();
@@ -34,7 +34,7 @@ function App() {
   }, [toggleDebug]);
 
   const matches = useMatches();
-  import.meta.env.DEV && console.log(matches);
+  if (import.meta.env.DEV) console.log(matches);
 
   // set initial state by read from localStorage, or if undefined, 'system'
   const [themeSetting, setThemeSetting] = useState(

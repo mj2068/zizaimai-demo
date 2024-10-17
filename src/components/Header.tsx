@@ -20,10 +20,10 @@ const Icons = {
   dark: <IconDarkModeRounded style={iconStyle} />,
 };
 
-import.meta.env.DEV && console.log("Header.tsx");
+if (import.meta.env.DEV) console.log("Header.tsx");
 
 export default function Header() {
-  import.meta.env.DEV && console.log("Header()");
+  if (import.meta.env.DEV) console.log("Header()");
 
   const matches = useMatches();
   const title =

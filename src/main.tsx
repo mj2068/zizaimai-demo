@@ -1,33 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { Button, ConfigProvider } from "antd";
+import { ConfigProvider } from "antd";
 import zhCN from "antd/locale/zh_CN";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import App from "./App";
 import ProjectPlantHelper from "./routes/ProjectPlantHelper";
 import Demo from "./components/Demo";
 import ProjectBzPrtc from "./routes/ProjectBzPrtc";
-import IconArrowLeft from "~icons/mdi/arrow-left";
-
-function BackButton() {
-  return (
-    <Link to="/">
-      <Button
-        style={{
-          border: "none",
-          background: "none",
-          boxShadow: "none",
-          padding: "0",
-          verticalAlign: "middle",
-        }}
-      >
-        <IconArrowLeft style={{ fontSize: "1.5rem" }} />
-      </Button>
-    </Link>
-  );
-}
+import ProjectDvdRental from "./routes/ProjectDvdRental";
+import UpButton from "./components/UpButton";
 
 const router = createBrowserRouter(
   [
@@ -47,7 +30,7 @@ const router = createBrowserRouter(
           element: <ProjectPlantHelper />,
           handle: {
             title: "植物小助手",
-            icon: <BackButton />,
+            icon: <UpButton />,
           },
         },
         {
@@ -55,7 +38,15 @@ const router = createBrowserRouter(
           element: <ProjectBzPrtc />,
           handle: {
             title: "资源交易中心信息发布屏",
-            icon: <BackButton />,
+            icon: <UpButton />,
+          },
+        },
+        {
+          path: "rental",
+          element: <ProjectDvdRental />,
+          handle: {
+            title: "租赁管理系统",
+            icon: <UpButton />,
           },
         },
       ],

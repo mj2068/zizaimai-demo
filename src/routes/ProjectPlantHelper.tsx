@@ -6,9 +6,9 @@ import IconCapacitor from "~icons/logos/capacitorjs-icon";
 import styles from "@/App.module.css";
 import { useContext } from "react";
 import { AppContext } from "@/AppContext";
-import { bgColors } from "@/theme";
+import { projectBgColors } from "@/theme";
 
-const bgColor = bgColors.plantHelper;
+const bgColor = projectBgColors.plantHelper;
 
 const ProjectPlantHelper = () => {
   const appContext = useContext(AppContext);
@@ -93,7 +93,7 @@ const ProjectPlantHelper = () => {
                 gap={"0.25rem"}
                 style={{ display: "inline-flex" }}
               >
-                <IconGithub style={{ filter: isDark ? "invert(1)" : "" }} />{" "}
+                <IconGithub style={{ filter: isDark ? "invert(1)" : "" }} />
                 仓库
               </Flex>
             </a>

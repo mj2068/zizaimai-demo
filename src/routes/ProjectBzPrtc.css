@@ -18,9 +18,6 @@
 }
 
 @media (min-width: 768px) {
-  .prtc-project-container {
-    padding-top: 4rem;
-  }
   .prtc-project-header-container {
     flex-direction: row;
   }

@@ -2,10 +2,23 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import Icons from "unplugin-icons/vite";
 import { fileURLToPath } from "url";
+import { promises } from "node:fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), Icons({ compiler: "jsx", jsx: "react" })],
+  plugins: [
+    react(),
+    Icons({
+      compiler: "jsx",
+      jsx: "react",
+      customCollections: {
+        "local-icons": {
+          "antd-vue": () =>
+            promises.readFile("./src/assets/antd-vue-logo.svg", "utf-8"),
+        },
+      },
+    }),
+  ],
   base: "/demo",
   resolve: {
     // alias: {

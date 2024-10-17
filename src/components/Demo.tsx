@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Flex } from "antd";
+import { Divider, Flex, Space } from "antd";
 import ProjectItem from "./ProjectItem";
-import { bgColors } from "@/theme";
+import { projectBgColors } from "@/theme";
 import IconPlayArrowRounded from "~icons/material-symbols/play-arrow-rounded";
 import IconSet from "./IconSet";
 
 export default function Demo() {
-  import.meta.env.DEV && console.log("Demo()");
+  if (import.meta.env.DEV) console.log("Demo()");
 
   useEffect(() => {
-    import.meta.env.DEV && console.log("Demo effect");
+    if (import.meta.env.DEV) console.log("Demo effect");
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     return () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -18,18 +18,18 @@ export default function Demo() {
 
   return (
     <>
-      <h2>项目示例</h2>
+      {/* <h2>项目示例</h2> */}
 
-      <Flex vertical gap="2rem">
+      <Flex vertical gap="6rem">
         <ProjectItem
-          bgColors={bgColors.bzPrtc}
+          bgColors={projectBgColors.bzPrtc}
           imageFiles="previous_work/bzprtc/screenv2.jpg"
         >
           <h3>滨州市公共资源交易中心信息发布屏系统</h3>
           <i className="small-text">集成项目</i>
 
           <p>
-            信息发布系统对资源交易中心当日项目、已授权评委人员信息及签到情况进行实时刷新，循环滚动显示。
+            信息发布屏系统对资源交易中心当日项目、已授权评委人员信息及签到情况进行实时刷新循环滚动显示，起到公开公示的作用。
           </p>
           <div className="button-container">
             <Link
@@ -48,7 +48,7 @@ export default function Demo() {
             "previous_work/ph-detail-2.jpg",
             "previous_work/ph-classify-2.jpg",
           ]}
-          bgColors={bgColors.plantHelper}
+          bgColors={projectBgColors.plantHelper}
           isImageFirst={true}
         >
           <h3>植物小助手</h3>
@@ -73,14 +73,53 @@ export default function Demo() {
             </Link>
           </div>
         </ProjectItem>
+
+        <ProjectItem
+          bgColors={projectBgColors.rental}
+          imageFiles="dvdrental/home.jpg"
+        >
+          <h3>租赁管理系统</h3>
+
+          <Space
+            className="small-text"
+            split={
+              <Divider type="vertical" style={{ backgroundColor: "grey" }} />
+            }
+          >
+            <i>适配PC浏览器</i>
+            <i>英文UI</i>
+          </Space>
+          <IconSet className="tech-stack" icons={["vue", "antdVue"]} />
+          <p>物品租赁管理系统，实现对多种数据主体的清单列表和详情查询等功能。</p>
+          <p className="gray-text small-text">* 示例页面使用音像制品模拟数据库</p>
+
+          <div className="button-container">
+            <Link
+              className="button"
+              to="/rental"
+              style={{ backgroundColor: projectBgColors.rental.accent }}
+            >
+              <span>开发说明</span>
+            </Link>
+            <a
+              className="button with-icon"
+              href="dvdrental"
+              target="_blank"
+              style={{ backgroundColor: projectBgColors.rental.accent }}
+            >
+              <IconPlayArrowRounded className="icon" />
+              示例页面
+            </a>
+          </div>
+        </ProjectItem>
       </Flex>
 
-      <h2>3D演示示例</h2>
+      <h2 className="section-title">3D应用</h2>
 
-      <Flex vertical gap="4rem">
+      <Flex vertical gap="6rem" className="section-container">
         <ProjectItem
           imageFiles="app_render.jpg"
-          bgColors={bgColors.fittingRoom}
+          bgColors={projectBgColors.fittingRoom}
         >
           <h3>3D换装试衣间</h3>
           <i className="small-text">设计适配PC浏览器</i>
@@ -107,7 +146,7 @@ export default function Demo() {
         <ProjectItem
           imageFiles="myster-door_banner_confetti.png"
           isImageFirst={true}
-          bgColors={bgColors.mysteryDoor}
+          bgColors={projectBgColors.mysteryDoor}
         >
           <h3>奇异门动画入口页面</h3>
           <i className="small-text">设计适配竖屏布局</i>

@@ -2,7 +2,7 @@ import { Flex, Image } from "antd";
 import IconEmail from "~icons/mdi/email";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
-  import.meta.env.DEV && console.log("Footer()");
+  if (import.meta.env.DEV) console.log("Footer()");
 
   return (
     <footer className="small-text gray-text">
