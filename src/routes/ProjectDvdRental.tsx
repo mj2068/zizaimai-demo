@@ -54,7 +54,7 @@ const ProjectDvdRental: React.FC = () => {
           <div className="button-container">
             <a
               className="button with-icon"
-              href="dvdrental"
+              href="/demo/dvdrental"
               target="_blank"
               style={{ backgroundColor: bgColor.accent, verticalAlign: "top" }}
             >

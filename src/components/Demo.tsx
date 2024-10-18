@@ -103,7 +103,7 @@ export default function Demo() {
             </Link>
             <a
               className="button with-icon"
-              href="dvdrental"
+              href="/demo/dvdrental"
               target="_blank"
               style={{ backgroundColor: projectBgColors.rental.accent }}
             >
@@ -134,7 +134,7 @@ export default function Demo() {
           <div className="button-container">
             <a
               className="button with-icon"
-              href="fitting-room"
+              href="/demo/fitting-room"
               style={{ backgroundColor: "#8360c3", verticalAlign: "top" }}
             >
               <IconPlayArrowRounded className="icon" />
@@ -149,7 +149,7 @@ export default function Demo() {
           bgColors={projectBgColors.mysteryDoor}
         >
           <h3>奇异门动画入口页面</h3>
-          <i className="small-text">设计适配竖屏布局</i>
+          <i className="small-text">设计适配移动竖屏最佳体验</i>
           <IconSet
             className="tech-stack"
             icons={["react", "threejs", "blender"]}
@@ -158,7 +158,7 @@ export default function Demo() {
           <div className="button-container">
             <a
               className="button with-icon"
-              href="mystery-door"
+              href="/demo/mystery-door"
               style={{ backgroundColor: "#c53f26" }}
             >
               <IconPlayArrowRounded className="icon" />
@@ -169,7 +169,7 @@ export default function Demo() {
 
         <ProjectItem
           imageFiles="room-scene_render.png"
-          bgColors={{ light: "#d9c7b0", dark: "#302416" }}
+          bgColors={projectBgColors.roomScene}
         >
           <h3>日式室内场景</h3>
           <i className="small-text">设计适配PC浏览器</i>
@@ -186,7 +186,7 @@ export default function Demo() {
           <div className="button-container">
             <a
               className="button with-icon"
-              href="room-scene"
+              href="/demo/room-scene"
               style={{ backgroundColor: "#526638" }}
             >
               <IconPlayArrowRounded className="icon" />

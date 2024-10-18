@@ -1,29 +1,59 @@
-import { Flex, Image } from "antd";
+import { Flex, Image, Skeleton } from "antd";
 import IconGithub from "~icons/logos/github-icon";
 import IconVue from "~icons/logos/vue";
 import IconIonic from "~icons/logos/ionic-icon";
 import IconCapacitor from "~icons/logos/capacitorjs-icon";
 import styles from "@/App.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "@/AppContext";
 import { projectBgColors } from "@/theme";
 
 const bgColor = projectBgColors.plantHelper;
 
+const images: { src: string; priority: "low" | "high"; loaded?: boolean }[] = [
+  { src: "ph-home-1.jpg", priority: "high" },
+  { src: "ph-detail-1.jpg", priority: "low" },
+  { src: "ph-add-1.jpg", priority: "low" },
+  { src: "ph-classify-1.jpg", priority: "low" },
+  { src: "ph-detail-2.jpg", priority: "low" },
+  { src: "ph-detail-3.jpg", priority: "low" },
+  { src: "ph-classify-2.jpg", priority: "low" },
+  { src: "ph-add-2.jpg", priority: "low" },
+];
+
 const ProjectPlantHelper = () => {
   const appContext = useContext(AppContext);
   const isDark = appContext?.theme === "dark";
 
-  const images = [
-    "ph-home-1.jpg",
-    "ph-detail-1.jpg",
-    "ph-add-1.jpg",
-    "ph-classify-1.jpg",
-    "ph-detail-2.jpg",
-    "ph-detail-3.jpg",
-    "ph-classify-2.jpg",
-    "ph-add-2.jpg",
-  ];
+  const [highPriorityLoaded, setHighPriorityLoaded] = useState(false);
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+
+  // delete these comments
+  // const handleImageLoad = (index: number) => {
+  //   setImagesLoaded((prev) => {
+  //     const newState = [...prev];
+  //     newState[index] = true;
+  //     return newState;
+  //   });
+  // };
+
+  const handleImageLoad = (index: number, priority: string) => {
+    images[index].loaded = true;
+
+    if (priority === "high") {
+      const allHighPriorityLoaded = images
+        .filter((img) => img.priority === "high")
+        .every((img) => img.loaded);
+      if (allHighPriorityLoaded) {
+        setHighPriorityLoaded(true);
+      }
+    }
+
+    const allImagesAreLoaded = images.every((img) => img.loaded);
+    if (allImagesAreLoaded) {
+      setAllImagesLoaded(true);
+    }
+  };
 
   return (
     <Flex
@@ -94,101 +124,42 @@ const ProjectPlantHelper = () => {
                 style={{ display: "inline-flex" }}
               >
                 <IconGithub style={{ filter: isDark ? "invert(1)" : "" }} />
-                仓库
+                代码仓库
               </Flex>
             </a>
           </div>
         </div>
 
         <div className={styles["screenshots-container"]}>
-          <div style={{ gridArea: "a" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[0]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "b" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[1]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "c" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[2]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "d" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[3]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "e" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[4]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "f" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[5]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "g" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[6]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
-          <div style={{ gridArea: "h" }}>
-            <Image
-              src={
-                new URL(
-                  `/src/assets/previous_work/${images[7]}`,
-                  import.meta.url
-                ).href
-              }
-              style={{}}
-            />
-          </div>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              style={{
+                gridArea: String.fromCharCode("a".charCodeAt(0) + index),
+                // display:
+                //   image.priority === "high" || highPriorityLoaded
+                //     ? "block"
+                //     : "none",
+              }}
+            >
+              {/* {image.priority === "high" || highPriorityLoaded ? ( */}
+              <Image
+                src={
+                  new URL(
+                    `/src/assets/previous_work/${image.src}`,
+                    import.meta.url
+                  ).href
+                }
+                style={{}}
+                onLoad={() => handleImageLoad(index, image.priority)}
+                // loading={image.priority === "high" ? "eager" : "lazy"}
+                placeholder
+              />
+              {/* ) : ( */}
+              {/*   <Skeleton.Image /> */}
+              {/* )} */}
+            </div>
+          ))}
         </div>
 
         <div className={styles["text-container"]}>

@@ -18,4 +18,5 @@ export const projectBgColors = {
   fittingRoom: { light: "#e9dff9", dark: "#140921" },
   mysteryDoor: { light: "#ffe3df", dark: "#210a02" },
   rental: { light: "#ceebeb", dark: "#072120", accent: "#209797" },
+  roomScene: { light: "#ebdecd", dark: "#302416" },
 };

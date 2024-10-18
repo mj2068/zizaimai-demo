@@ -56,13 +56,12 @@ a.button.with-icon {
   padding-left: 0;
 }
 a.button:focus {
-  border: 4px solid gold;
+  border: 4px solid black;
 }
 .button .icon {
   font-size: 1.5rem;
   vertical-align: middle;
 }
-
 
 .section-title:not(:first-child) {
   margin-top: 6rem;
@@ -71,6 +70,7 @@ a.button:focus {
 .project-item {
   display: grid;
   gap: 1rem;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
 }
 
 .project-item .image-container {
@@ -85,8 +85,7 @@ a.button:focus {
   margin-block: 0.5rem;
 }
 .project-item .project-desc h3 + i,
-.project-item .project-desc h3 + *
-{
+.project-item .project-desc h3 + * {
   margin-bottom: 0.5rem;
   color: var(--clr-secondary-fg);
 }
@@ -157,6 +156,23 @@ a.button:focus {
 }
 .icon[data-icon="threejs"].dark {
   filter: invert(1);
+}
+
+.goto-top-button {
+  display: none;
+  opacity: 0;
+
+  &.show {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+/* 2024年10月18日 22点43分: new stuff, editor might squiggle this at-rule */
+@starting-style {
+  .goto-top-button.show {
+    opacity: 0;
+  }
 }
 
 @media (min-width: 768px) {

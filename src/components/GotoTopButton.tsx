@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import IconArrowUp from "~icons/mdi/arrow-up";
-import { AppContext } from "@/AppContext";
 
 interface GotoTopButtonProps {
   showBelow?: number;
@@ -8,7 +7,6 @@ interface GotoTopButtonProps {
 
 const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
   const [show, setShow] = useState(false);
-  const appContext = useContext(AppContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,38 +25,32 @@ const GotoTopButton: React.FC<GotoTopButtonProps> = ({ showBelow = 300 }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const shadowColor =
-    appContext?.theme === "dark"
-      ? "rgba(255, 255, 128, 0.3)"
-      : "rgba(0, 0, 0, 0.2)";
-
   return (
     <>
-      {show && (
-        <button
-          onClick={handleClick}
-          style={{
-            position: "fixed",
-            bottom: "40px",
-            right: "40px",
-            zIndex: 1000,
-            width: "48px",
-            height: "48px",
-            backgroundColor: "#dd774b",
-            color: "white",
-            border: "none",
-            borderRadius: "50%",
-            cursor: "pointer",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "24px",
-            boxShadow: `0 2px 5px ${shadowColor}`,
-          }}
-        >
-          <IconArrowUp />
-        </button>
-      )}
+      <button
+        onClick={handleClick}
+        className={`goto-top-button ${show ? "show" : ""}`}
+        style={{
+          position: "fixed",
+          right: "40px",
+          bottom: "40px",
+          width: "48px",
+          height: "48px",
+          zIndex: 9,
+          backgroundColor: "#dd774b",
+          color: "white",
+          border: "none",
+          borderRadius: "50%",
+          cursor: "pointer",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "48px",
+          boxShadow: `2px 2px 4px #0005`,
+          transition: "display 0.2s allow-discrete, opacity 0.2s",
+        }}
+      >
+        <IconArrowUp />
+      </button>
     </>
   );
 };
