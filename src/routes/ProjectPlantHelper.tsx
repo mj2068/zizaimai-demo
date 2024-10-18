@@ -1,4 +1,4 @@
-import { Flex, Image, Skeleton } from "antd";
+import { Flex, Image } from "antd";
 import IconGithub from "~icons/logos/github-icon";
 import IconVue from "~icons/logos/vue";
 import IconIonic from "~icons/logos/ionic-icon";
@@ -25,8 +25,8 @@ const ProjectPlantHelper = () => {
   const appContext = useContext(AppContext);
   const isDark = appContext?.theme === "dark";
 
-  const [highPriorityLoaded, setHighPriorityLoaded] = useState(false);
-  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  const [, setHighPriorityLoaded] = useState(false);
+  const [, setAllImagesLoaded] = useState(false);
 
   // delete these comments
   // const handleImageLoad = (index: number) => {
