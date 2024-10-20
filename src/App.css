@@ -12,7 +12,7 @@ header {
   /* justify-content: space-between; */
   /* align-items: center; */
   padding: 0 0.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 footer {
@@ -75,6 +75,11 @@ a.button:focus {
 
 .project-item .image-container {
   position: relative;
+}
+
+.project-item .tech-stack {
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .project-item .project-desc {
@@ -143,12 +148,7 @@ a.button:focus {
 }
 
 .header-title.longer-6 {
-  font-size: 0.75rem;
-}
-
-.project-item .tech-stack {
-  margin-top: 8px;
-  margin-bottom: 16px;
+  font-size: 1rem;
 }
 
 .icon {

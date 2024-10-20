@@ -26,12 +26,14 @@ export default function Header() {
   if (import.meta.env.DEV) console.log("Header()");
 
   const matches = useMatches();
+  console.log(matches);
   const title =
     (matches[matches.length - 1]?.handle as HeaderHandle | undefined)?.title ||
     "自在麦";
 
   const icon = (matches[matches.length - 1]?.handle as HeaderHandle | undefined)
     ?.icon || <IconCodeTags style={{ fontSize: "2rem", color: "#dd774b" }} />;
+
   const appContext = useContext(AppContext);
 
   return (

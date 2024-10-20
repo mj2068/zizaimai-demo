@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Debug_Sizes from "./components/Debug_Sizes";
 import useDebug from "./hooks/useDebug";
-import { Outlet, useMatches } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AppContext } from "./AppContext";
 import { Theme, ThemeSetting } from "./theme";
 import { Flex } from "antd";
@@ -32,9 +32,6 @@ function App() {
       delete window.toggleDebug;
     };
   }, [toggleDebug]);
-
-  const matches = useMatches();
-  if (import.meta.env.DEV) console.log(matches);
 
   // set initial state by read from localStorage, or if undefined, 'system'
   const [themeSetting, setThemeSetting] = useState(
