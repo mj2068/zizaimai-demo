@@ -49,6 +49,13 @@ function App() {
     return matchesDark ? "dark" : "light";
   });
 
+  const [isMinWidth768, setIsMinWidth768] = useState(
+    matchMedia("(min-width: 768px)").matches
+  );
+  const [isMinWidth425, setIsMinWidth425] = useState(
+    matchMedia("(min-width: 425px)").matches
+  );
+
   useEffect(() => {
     if (themeSetting !== localStorage.getItem("themeSetting"))
       localStorage.setItem("themeSetting", themeSetting);
@@ -68,6 +75,18 @@ function App() {
     }
     mediaDark.addEventListener("change", onColorMediaChange);
 
+    function onMinWidth768Change(e: MediaQueryListEvent) {
+      setIsMinWidth768(e.matches);
+    }
+    const mediaMinWidth768 = matchMedia("(min-width: 768px)");
+    mediaMinWidth768.addEventListener("change", onMinWidth768Change);
+
+    function onMinWidth425Change(e: MediaQueryListEvent) {
+      setIsMinWidth425(e.matches);
+    }
+    const mediaMinWidth425 = matchMedia("(min-width: 425px)");
+    mediaMinWidth425.addEventListener("change", onMinWidth425Change);
+
     return () => {
       mediaDark.removeEventListener("change", onColorMediaChange);
     };
@@ -80,7 +99,9 @@ function App() {
 
   return (
     <>
-      <AppContext.Provider value={{ theme, themeSetting, setThemeSetting }}>
+      <AppContext.Provider
+        value={{ theme, themeSetting, setThemeSetting, isMinWidth768, isMinWidth425 }}
+      >
         {showDebug && <Debug_Sizes />}
         <Flex vertical>
           <Header />

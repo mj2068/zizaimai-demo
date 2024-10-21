@@ -19,6 +19,7 @@ export default function Demo() {
   return (
     <>
       {/* <h2>项目示例</h2> */}
+      {import.meta.env.DEV && <Link to="weekly-effect">weekly</Link>}
 
       <Flex vertical gap="6rem">
         <ProjectItem
@@ -37,7 +38,7 @@ export default function Demo() {
               to="/bzprtc"
               style={{ backgroundColor: "#1182e9" }}
             >
-              <span>开发说明</span>
+              <span>项目说明</span>
             </Link>
           </div>
         </ProjectItem>
@@ -90,8 +91,12 @@ export default function Demo() {
             <i>英文UI</i>
           </Space>
           <IconSet className="tech-stack" icons={["vue", "antdVue"]} />
-          <p>物品租赁管理系统，实现对多种数据主体的清单列表和详情查询等功能。</p>
-          <p className="gray-text small-text">* 示例页面使用音像制品模拟数据库</p>
+          <p>
+            物品租赁管理系统，实现对多种数据主体的清单列表和详情查询等功能。
+          </p>
+          <p className="gray-text small-text">
+            * 示例页面使用音像制品模拟数据库
+          </p>
 
           <div className="button-container">
             <Link

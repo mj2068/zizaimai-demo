@@ -52,6 +52,7 @@ const router = createBrowserRouter(
         {
           path: "weekly-effect",
           lazy: () => import("./routes/WeeklyEffect"),
+          handle: { title: "每周效果挑战", icon: <UpButton /> },
           children: [
             {
               index: true,
@@ -62,6 +63,11 @@ const router = createBrowserRouter(
               path: "one",
               lazy: () => import("./routes/weekly-effect/one"),
               handle: { title: "鼠标镶边", icon: <UpButton /> },
+            },
+            {
+              path: "two",
+              lazy: () => import("./routes/weekly-effect/two"),
+              handle: { title: "动态配色", icon: <UpButton /> },
             },
           ],
         },

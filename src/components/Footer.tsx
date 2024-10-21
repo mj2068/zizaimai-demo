@@ -50,7 +50,6 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
           <a
             className=""
             href="mailto:yuelianghushenfu@sina.com"
-            style={{ color: "lightblue" }}
           >
             yuelianghushenfu@sina.com
           </a>
@@ -68,7 +67,6 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
             <a
               className=""
               href="https://zizaimai.space/demo/"
-              style={{ color: "lightblue" }}
             >
               zizaimai.space
             </a>
@@ -79,7 +77,6 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
             className="miit-link"
             href="http://beian.miit.gov.cn/"
             target="_blank"
-            style={{ color: "lightblue" }}
           >
             鲁ICP备2022041953号-1
           </a>

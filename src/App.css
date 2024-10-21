@@ -18,6 +18,14 @@ header {
 footer {
   display: flex;
   justify-content: center;
+
+  & a {
+    text-decoration: underline;
+    color: #ccc;
+  }
+  & a:hover {
+    color: lightgoldenrodyellow;
+  }
 }
 
 h1,
@@ -56,7 +64,7 @@ a.button.with-icon {
   padding-left: 0;
 }
 a.button:focus {
-  border: 4px solid black;
+  border: 4px solid rgb(236, 180, 106);
 }
 .button .icon {
   font-size: 1.5rem;

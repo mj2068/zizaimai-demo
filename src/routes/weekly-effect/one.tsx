@@ -67,15 +67,18 @@ export default function One() {
   const rimColor =
     appContext?.theme === "dark" ? "gold" : ("brown" as CSSProperties["color"]);
 
+  const [thickness, setThickness] = useState(2);
+  const [gap, setGap] = useState(8);
   useEffect(() => {
+    // bug: maximum update depth exceeded
     function onMouseMove(e: MouseEvent) {
       setPos({ x: e.pageX, y: e.pageY });
     }
 
-    document.addEventListener("mousemove", onMouseMove, true);
+    document.body.addEventListener("mousemove", onMouseMove);
 
     return () => {
-      document.removeEventListener("mousemove", onMouseMove, true);
+      document.body.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
@@ -85,7 +88,41 @@ export default function One() {
         <IconInfoRounded style={{ verticalAlign: "top" }} />
         移动鼠标到以下卡片上会有镶边效果
       </p>
-      <Flex wrap gap={"0.5rem"}>
+      <Flex
+        justify="center"
+        align="center"
+        gap={"2rem"}
+        wrap
+        style={{ marginBottom: "1rem" }}
+      >
+        <Flex align="center">
+          <label htmlFor="thickness">镶边厚度：</label>
+          <input
+            id="thickness"
+            type="range"
+            min="1"
+            max="8"
+            value={thickness}
+            onChange={(e) =>
+              setThickness(Math.min(Math.max(Number(e.target.value), 1), 8))
+            }
+          />
+          <span>{thickness}px</span>
+        </Flex>
+        <Flex align="center">
+          <label htmlFor="gap">卡片间隙：</label>
+          <input
+            id="gap"
+            type="range"
+            min="0"
+            max="24"
+            value={gap}
+            onChange={(e) => setGap(Number(e.target.value))}
+          />
+          <span>{gap}px</span>
+        </Flex>
+      </Flex>
+      <Flex wrap gap={`${gap}px`}>
         {Array(9)
           .fill(0)
           .map((_, index) => (
@@ -98,12 +135,13 @@ export default function One() {
               }}
               key={index}
               style={{
-                padding: "2px",
+                padding: `${thickness}px`,
                 overflow: "hidden",
                 position: "relative",
 
                 flex: "1 200px",
                 minHeight: "200px",
+                boxSizing: "border-box",
                 borderRadius: "0.5rem",
               }}
             >
@@ -127,8 +165,13 @@ export default function One() {
                 className="gray-text"
               >
                 {comments[index].content}
-                <br />
-                <div style={{ fontSize: "0.8rem", textAlign: "right" }}>
+                <div
+                  style={{
+                    marginTop: "0.5rem",
+                    fontSize: "0.8rem",
+                    textAlign: "right",
+                  }}
+                >
                   {comments[index].source}
                 </div>
               </div>
