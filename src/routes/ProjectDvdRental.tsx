@@ -100,10 +100,6 @@ const ProjectDvdRental: React.FC = () => {
         </div>
 
         <div className="text-content section">
-          <h3 className="section-title">路由导图</h3>
-        </div>
-
-        <div className="text-content section">
           <h3 className="section-title">页面展示</h3>
         </div>
         <Flex

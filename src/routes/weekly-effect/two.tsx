@@ -3,6 +3,7 @@ import { Flex } from "antd";
 import { useContext, useState } from "react";
 import IconRefreshRounded from "~icons/material-symbols/refresh-rounded";
 import ColorMatchingImageCard from "@/components/ColorMatchingImageCard";
+import classes from "@/App.module.css";
 
 const images = import.meta.glob<string>("@/assets/weekly-effect/images/*.jpg", {
   eager: true,
@@ -35,6 +36,7 @@ export default function WeeklyEffectTwo() {
 
   return (
     <Flex vertical gap={"1rem"} style={{}}>
+      <p>卡片背景色匹配图片色彩</p>
       <Flex justify="center" align="center" gap={"2rem"} wrap>
         <Flex align="center">
           <label htmlFor="number-of-cards">卡片数量：</label>
@@ -81,6 +83,15 @@ export default function WeeklyEffectTwo() {
             </Flex>
           ))}
       </Flex>
+
+      <div className={classes["text-container"]}>
+        <p>
+          获取图片色彩需要一定的计算时间，大约为几十毫秒，取决于图片分辨率。为避免计算完成后突然的颜色变化，设置了背景色的transition转换。
+        </p>
+        <p>
+          线性渐变不支持transition，所以使用一层::before伪元素用opacity转换实现。
+        </p>
+      </div>
     </Flex>
   );
 }

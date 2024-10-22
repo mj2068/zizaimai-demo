@@ -7,8 +7,8 @@ export default function Index() {
       <Space
         split={<Divider type="vertical" style={{ borderColor: "#ccc" }} />}
       >
-        <Link to="one">one - 鼠标镶边</Link>
-        <Link to="two">two - 动态配色</Link>
+        <Link to="one">鼠标镶边</Link>
+        <Link to="two">动态配色</Link>
       </Space>
     </>
   );

@@ -1,8 +1,25 @@
 .card-container {
-  background: transparent;
-  transition: background-image 1s ease-in-out;
+  position: relative;
+}
+
+.card-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--clr-secondary-bg);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.card-container img {
+  position: relative;
+  z-index: 1;
 }
 
 .card-container.loaded {
   background: linear-gradient(30deg, var(--clr1), var(--clr2));
 }
+.card-container.loaded::before {
+  opacity: 0;
+}
+

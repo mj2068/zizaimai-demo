@@ -1,10 +1,16 @@
 import { AppContext } from "@/AppContext";
 import { Flex, Image } from "antd";
-import { CSSProperties, useContext, useEffect, useState } from "react";
+import {
+  CSSProperties,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import classes from "@/App.module.css";
 import IconInfoRounded from "~icons/material-symbols/info-rounded";
 import JpgOne1 from "@/assets/weekly-effect/one-1.jpg";
 import JpgOne2 from "@/assets/weekly-effect/one-2.jpg";
+import throttle from "lodash/throttle";
 
 const comments = [
   {
@@ -69,10 +75,17 @@ export default function One() {
 
   const [thickness, setThickness] = useState(2);
   const [gap, setGap] = useState(8);
+
   useEffect(() => {
     // bug: maximum update depth exceeded
+    // 2024年10月22日 16点00分：
+    // 用了lodash的throttle后，报错消失了，应该是react setState太频繁的问题
+    const throttledSetPos = throttle((x: number, y: number) => {
+      setPos({ x, y });
+    }, 50);
+
     function onMouseMove(e: MouseEvent) {
-      setPos({ x: e.pageX, y: e.pageY });
+      throttledSetPos(e.pageX, e.pageY);
     }
 
     document.body.addEventListener("mousemove", onMouseMove);
