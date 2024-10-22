@@ -1,6 +1,7 @@
 import { Divider, Flex, Image, Space } from "antd";
 import { useContext } from "react";
 import IconPlayArrowRounded from "~icons/material-symbols/play-arrow-rounded";
+import IconGithub from "~icons/logos/github-icon";
 
 import { AppContext } from "@/AppContext";
 import "./ProjectDvdRental.css";
@@ -66,6 +67,22 @@ const ProjectDvdRental: React.FC = () => {
           <p>
             本应用是一个自主开发的物品租赁管理系统。设计要求英文UI，指定了开发时音像制品模板数据库。功能上实现对各记录主体的清单列表和详情查询等功能。
           </p>
+<div style={{ marginTop: "1rem" }}>
+            <a
+              href="https://github.com/mj2068/dvdrental-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Flex
+                align="center"
+                gap={"0.25rem"}
+                style={{ display: "inline-flex" }}
+              >
+                <IconGithub style={{ filter: isDark ? "invert(1)" : "" }} />
+                代码仓库
+              </Flex>
+            </a>
+          </div>
         </Flex>
 
         <Image

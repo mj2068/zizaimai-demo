@@ -89,10 +89,11 @@ const ProjectPlantHelper = () => {
           />
 
           <p className={styles["large-text"]}>
-            植物小助手是一款使用物联网技术旨在帮助用户管理小型植物和花卉的多平台App。
+            <b>植物小助手</b>
+            是一款使用物联网技术旨在帮助用户管理小型植物和花卉的多平台App。
           </p>
 
-          <p className={styles["p-title"]}>技术介绍</p>
+          <p className={styles["p-title"]}>技术实现</p>
           <span>
             使用
             <Flex gap={4} align="center" style={{ display: "inline-flex" }}>

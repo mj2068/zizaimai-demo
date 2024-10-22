@@ -65,7 +65,7 @@ export default function Header() {
               value={appContext?.themeSetting}
               onChange={(v) => appContext?.setThemeSetting(v.target.value)}
               style={{
-                boxShadow: "2px 2px 4px #0005",
+                boxShadow: "0px 0px 2px #0003",
                 borderRadius: "6px",
               }}
             >

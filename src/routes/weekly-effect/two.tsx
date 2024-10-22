@@ -2,6 +2,7 @@ import { AppContext } from "@/AppContext";
 import { Flex } from "antd";
 import React, { useContext, useState } from "react";
 import IconRefreshRounded from "~icons/material-symbols/refresh-rounded";
+import IconInfoRounded from "~icons/material-symbols/info-rounded";
 import ColorMatchingImageCard from "@/components/ColorMatchingImageCard";
 import classes from "@/App.module.css";
 
@@ -36,7 +37,9 @@ export default function WeeklyEffectTwo() {
 
   return (
     <Flex vertical gap={"1rem"} style={{}}>
-      <p>卡片背景色匹配图片色彩</p>
+      <p>
+        <IconInfoRounded style={{ verticalAlign: "top" }} />
+        卡片背景色匹配图片色彩</p>
       <Flex justify="center" align="center" gap={"2rem"} wrap>
         <Flex align="center">
           <label htmlFor="number-of-cards">卡片数量：</label>

@@ -3,6 +3,7 @@ import { CSSProperties, useContext, useState } from "react";
 import { useColorThief } from "@/hooks/useColorThief";
 import appClasses from "@/App.module.css";
 import classes from "./ColorMatchingImageCard.module.css";
+import { Image } from "antd";
 
 export default function ColorMatchingImageCard({ url }: { url: string }) {
   const appContext = useContext(AppContext);
@@ -39,7 +40,25 @@ export default function ColorMatchingImageCard({ url }: { url: string }) {
         colors?.length ? ` ${classes["loaded"]}` : ""
       }`}
     >
-      <img
+      {/* <img */}
+      {/*   onLoad={(e) => { */}
+      {/*     const color = getColor(e.target); */}
+      {/*     const [color2, color3] = getPalette(e.target, 2); */}
+      {/*     setColors([ */}
+      {/*       `rgb(${color[0]},${color[1]},${color[2]})`, */}
+      {/*       `rgb(${color2[0]},${color2[1]},${color2[2]})`, */}
+      {/*       `rgb(${color3[0]},${color3[1]},${color3[2]})`, */}
+      {/*     ]); */}
+      {/*   }} */}
+      {/*   src={url} */}
+      {/*   style={{ */}
+      {/*     width: "100%", */}
+      {/*     display: "block", */}
+      {/*     borderRadius: "8px", */}
+      {/*     boxShadow: "0 1px 4px 1px rgba(0, 0, 0, 0.5)", */}
+      {/*   }} */}
+      {/* /> */}
+      <Image
         onLoad={(e) => {
           const color = getColor(e.target);
           const [color2, color3] = getPalette(e.target, 2);
