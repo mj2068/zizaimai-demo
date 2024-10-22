@@ -105,7 +105,7 @@ export default function ProjectItem({
 
   return (
     <div
-      className="project-item round-corner-4"
+      className="project-item"
       style={{
         backgroundColor:
           appContext?.theme === "light" ? bgColors?.light : bgColors?.dark,

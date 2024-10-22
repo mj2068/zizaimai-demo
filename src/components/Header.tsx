@@ -9,7 +9,7 @@ import IconLightModeRounded from "~icons/material-symbols/light-mode-rounded";
 import IconSettingsRounded from "~icons/material-symbols/settings-rounded";
 
 interface HeaderHandle {
-  title?: string;
+  title?: string | React.JSX.Element;
   icon?: React.ReactNode;
 }
 
@@ -27,12 +27,17 @@ export default function Header() {
 
   const matches = useMatches();
   console.log(matches);
+
   const title =
     (matches[matches.length - 1]?.handle as HeaderHandle | undefined)?.title ||
     "自在麦";
 
   const icon = (matches[matches.length - 1]?.handle as HeaderHandle | undefined)
-    ?.icon || <IconCodeTags style={{ fontSize: "2rem", color: "#dd774b" }} />;
+    ?.icon || (
+    <IconCodeTags
+      style={{ fontSize: "2rem", color: "#dd774b", display: "block" }}
+    />
+  );
 
   const appContext = useContext(AppContext);
 
@@ -47,44 +52,45 @@ export default function Header() {
       }}
     >
       <header>
-        <Flex justify="space-between" align="center" style={{ height: "4rem" }}>
-          <Flex align="center" gap="0.5rem">
-            {icon}
-            <h1
-              className={`header-title${title.length > 6 ? " longer-6" : ""}`}
-            >
-              {title}
-            </h1>
-          </Flex>
+        <div className="header">
+          <div className="header-icon">{icon}</div>
+          <h1 className={`header-title`} title="">
+            {title}
+          </h1>
 
-          <Radio.Group
-            optionType="button"
-            buttonStyle="solid"
-            value={appContext?.themeSetting}
-            onChange={(v) => appContext?.setThemeSetting(v.target.value)}
-            style={{ flexShrink: 0 }}
-          >
-            {themeSettingOptions.map((theme) => (
-              <Radio
-                key={theme.id}
-                value={theme.id}
-                style={{
-                  width: "2.2rem",
-                  height: "2.2rem",
-                  padding: "0",
-                }}
-              >
-                <Flex
-                  style={{ width: "100%", height: "100%" }}
-                  justify="center"
-                  align="center"
+          <Flex className="header-buttons">
+            <Radio.Group
+              optionType="button"
+              buttonStyle="solid"
+              value={appContext?.themeSetting}
+              onChange={(v) => appContext?.setThemeSetting(v.target.value)}
+              style={{
+                boxShadow: "2px 2px 4px #0005",
+                borderRadius: "6px",
+              }}
+            >
+              {themeSettingOptions.map((theme) => (
+                <Radio
+                  key={theme.id}
+                  value={theme.id}
+                  style={{
+                    width: "2.2rem",
+                    height: "2.2rem",
+                    padding: "0",
+                  }}
                 >
-                  {Icons[theme.id]}
-                </Flex>
-              </Radio>
-            ))}
-          </Radio.Group>
-        </Flex>
+                  <Flex
+                    style={{ width: "100%", height: "100%" }}
+                    justify="center"
+                    align="center"
+                  >
+                    {Icons[theme.id]}
+                  </Flex>
+                </Radio>
+              ))}
+            </Radio.Group>
+          </Flex>
+        </div>
       </header>
     </ConfigProvider>
   );

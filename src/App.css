@@ -11,8 +11,28 @@ header {
   /* display: flex; */
   /* justify-content: space-between; */
   /* align-items: center; */
-  padding: 0 0.5rem;
+  padding: 1.5rem 1rem;
   margin-bottom: 6rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: #ecdad2;
+
+  .dark & {
+    background-color: #221c19;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header-title {
+    grid-row: 2;
+    grid-column: span 2;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: unset;
+  }
 }
 
 footer {
@@ -149,16 +169,6 @@ a.button:focus {
   color: var(--clr-secondary-fg);
 }
 
-.header-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: unset;
-}
-
-.header-title.longer-6 {
-  font-size: 0.75rem;
-}
-
 .icon {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
 }
@@ -183,13 +193,16 @@ a.button:focus {
   }
 }
 @media (min-width: 425px) {
-  .header-title.longer-6 {
-    font-size: 1rem;
-  }
 }
 @media (min-width: 768px) {
-  .header-title.longer-6 {
-    font-size: 1.5rem;
+  header {
+    .header {
+      grid-template-columns: auto 1fr auto;
+    }
+    .header-title {
+      grid-row: 1;
+      grid-column: 2 / span 1;
+    }
   }
 
   .image.primary {
@@ -210,5 +223,15 @@ a.button:focus {
   }
   .project-item .project-desc {
     padding-inline: unset;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .project-item {
+    border-radius: 4px;
   }
 }

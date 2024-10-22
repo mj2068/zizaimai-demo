@@ -24,10 +24,11 @@ export default function UpButton() {
           background: "none",
           boxShadow: "none",
           padding: "0",
-          verticalAlign: "middle",
+          display: "block",
+          height: "unset",
         }}
       >
-        <IconArrowBack style={{ fontSize: "1.5rem" }} />
+        <IconArrowBack style={{ fontSize: "2rem", display: "block" }} />
       </Button>
     </Link>
   );

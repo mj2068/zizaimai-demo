@@ -23,7 +23,7 @@ const router = createBrowserRouter(
         {
           index: true,
           element: <Demo />,
-          handle: { title: "项目及作品集" },
+          handle: { title: "项目 / 作品集" },
         },
         {
           path: "plant-helper",

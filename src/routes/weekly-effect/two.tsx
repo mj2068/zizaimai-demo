@@ -1,6 +1,6 @@
 import { AppContext } from "@/AppContext";
 import { Flex } from "antd";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import IconRefreshRounded from "~icons/material-symbols/refresh-rounded";
 import ColorMatchingImageCard from "@/components/ColorMatchingImageCard";
 import classes from "@/App.module.css";
@@ -69,7 +69,7 @@ export default function WeeklyEffectTwo() {
               cols[i % 2].push(<ColorMatchingImageCard key={url} url={url} />);
               return cols;
             },
-            [[], []] as [JSX.Element[], JSX.Element[]]
+            [[], []] as [React.JSX.Element[], React.JSX.Element[]]
           )
           .map((row, i) => (
             <Flex
