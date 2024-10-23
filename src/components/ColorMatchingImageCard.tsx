@@ -77,7 +77,7 @@ export default function ColorMatchingImageCard({ url }: { url: string }) {
         }}
       />
       <h3
-        style={{ color: colors ? colors[2] : undefined }}
+        style={{ color: colors ? colors[2] : undefined, position: "relative" }}
         className={
           !appContext?.isMinWidth425 ? appClasses["text-container"] : undefined
         }
