@@ -31,6 +31,7 @@ export default function Three() {
           })}
         </div>
       )}
+
       <Flex className={classes["text-container"]}>
         <IconInfoRounded style={{ verticalAlign: "top" }} />
         <ul style={{ marginLeft: "0.5rem" }}>
@@ -39,6 +40,7 @@ export default function Three() {
           <li>内容为随机模板文字，AI生成</li>
         </ul>
       </Flex>
+
       <section>
         <h2>时光的馈赠</h2>
         <div className={threeClasses["text-container"]}>
