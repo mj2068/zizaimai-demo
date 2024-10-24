@@ -26,7 +26,7 @@ export default function Header() {
   if (import.meta.env.DEV) console.log("Header()");
 
   const matches = useMatches();
-  console.log(matches);
+  if (import.meta.env.DEV) console.log(matches);
 
   const title =
     (matches[matches.length - 1]?.handle as HeaderHandle | undefined)?.title ||
@@ -65,7 +65,7 @@ export default function Header() {
               value={appContext?.themeSetting}
               onChange={(v) => appContext?.setThemeSetting(v.target.value)}
               style={{
-                boxShadow: "0px 0px 2px #0003",
+                boxShadow: "1px 1px 2px #0004",
                 borderRadius: "6px",
               }}
             >
@@ -80,9 +80,9 @@ export default function Header() {
                   }}
                 >
                   <Flex
-                    style={{ width: "100%", height: "100%" }}
                     justify="center"
                     align="center"
+                    style={{ width: "100%", height: "100%" }}
                   >
                     {Icons[theme.id]}
                   </Flex>

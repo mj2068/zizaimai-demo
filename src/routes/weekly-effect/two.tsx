@@ -39,7 +39,8 @@ export default function WeeklyEffectTwo() {
     <Flex vertical gap={"1rem"} style={{}}>
       <p>
         <IconInfoRounded style={{ verticalAlign: "top" }} />
-        卡片背景色匹配图片色彩</p>
+        卡片背景色匹配图片色彩
+      </p>
       <Flex justify="center" align="center" gap={"2rem"} wrap>
         <Flex align="center">
           <label htmlFor="number-of-cards">卡片数量：</label>

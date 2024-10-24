@@ -7,34 +7,12 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
   if (import.meta.env.DEV) console.log("Footer()");
 
   return (
-    <footer className="small-text gray-text" style={{}}>
-      <Flex
-        vertical
-        align="center"
-        style={{
-          maxWidth: "40rem",
-          // backgroundColor: "var(--clr-secondary-bg)",
-          color: "var(--clr-dark-fg)",
-          marginTop: "12rem",
-          paddingTop: "8rem",
-          paddingBottom: "0.25rem",
-          borderRadius: "8px 8px 0 0",
-          flexGrow: 1,
-          position: "relative",
-          overflow: "hidden",
-          boxShadow: "0 0 2px 2px rgba(0, 0, 0, 0.4)",
-        }}
-      >
+    <footer className="small-text gray-text">
+      <Flex vertical align="center">
         <img
           src={JpgFooter}
-          alt="footer"
-          style={{
-            position: "absolute",
-            width: "auto",
-            height: "auto",
-            zIndex: -1,
-            top: "0",
-          }}
+          alt="Footer background image"
+          className="footer-bg"
         />
         <Image
           className="image"
@@ -42,15 +20,15 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
           title="微信二维码"
           alt="微信二维码"
           width={96}
-          style={{ boxShadow: "0 0 2px 2px rgba(0, 0, 0, 0.4)" }}
+          style={{
+            boxShadow: "0 0 2px 2px rgba(0, 0, 0, 0.4)",
+            marginBottom: "0.5rem",
+          }}
         />
 
         <Flex align="flex-end" gap="0.25rem">
           <IconEmail style={{ fontSize: "0.8rem" }} />
-          <a
-            className=""
-            href="mailto:yuelianghushenfu@sina.com"
-          >
+          <a className="" href="mailto:yuelianghushenfu@sina.com">
             yuelianghushenfu@sina.com
           </a>
         </Flex>
@@ -61,13 +39,10 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
             <button onClick={toggleDebug}>dev</button>
           </>
         )}
-        
+
         <div className="copyright-container mar-t-8">
           <span>
-            <a
-              className=""
-              href="https://zizaimai.space/demo/"
-            >
+            <a className="" href="https://zizaimai.space/demo/">
               zizaimai.space
             </a>
           </span>

@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { CSSProperties, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { ConfigProvider } from "antd";
@@ -11,6 +11,18 @@ import Demo from "./components/Demo";
 import ProjectBzPrtc from "./routes/ProjectBzPrtc";
 import ProjectDvdRental from "./routes/ProjectDvdRental";
 import UpButton from "./components/UpButton";
+
+interface Tag {
+  id: string;
+  name: string;
+  color?: CSSProperties["color"];
+}
+
+export interface RouteHandle {
+  title?: string | React.JSX.Element;
+  icon?: React.ReactNode;
+  tags?: string[] | Tag[];
+}
 
 const router = createBrowserRouter(
   [
@@ -52,12 +64,12 @@ const router = createBrowserRouter(
         {
           path: "weekly-effect",
           lazy: () => import("./routes/WeeklyEffect"),
-          handle: { title: "每周效果挑战", icon: <UpButton /> },
+          handle: { title: "效果挑战合集", icon: <UpButton /> },
           children: [
             {
               index: true,
               lazy: () => import("@/routes/weekly-effect"),
-              handle: { title: "每周效果挑战", icon: <UpButton /> },
+              handle: { title: "效果挑战合集", icon: <UpButton /> },
             },
             {
               path: "one",
@@ -68,6 +80,15 @@ const router = createBrowserRouter(
               path: "two",
               lazy: () => import("./routes/weekly-effect/two"),
               handle: { title: "动态配色", icon: <UpButton /> },
+            },
+            {
+              path: "three",
+              lazy: () => import("./routes/weekly-effect/three"),
+              handle: {
+                title: "粘性标题",
+                icon: <UpButton />,
+                tags: ["CSS", "布局"],
+              },
             },
           ],
         },
