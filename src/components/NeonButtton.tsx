@@ -4,18 +4,28 @@ console.log(classes);
 
 export default function NeonButton({
   children,
-  color = "white",
+  color,
+  borderColor,
   ...props
 }: PropsWithChildren<
-  { color?: CSSProperties["color"] } & AnchorHTMLAttributes<HTMLAnchorElement>
+  {
+    color?: CSSProperties["color"];
+    borderColor?: CSSProperties["color"];
+  } & AnchorHTMLAttributes<HTMLAnchorElement>
 >) {
   return (
     <a
       className={classes["neon-button"]}
       {...props}
-      style={{ ...props.style, "--clr-neon": color } as CSSProperties}
+      style={
+        {
+          ...props.style,
+          "--colorNeon": color,
+          "--colorBorder": borderColor,
+        } as CSSProperties
+      }
     >
-      <div className={classes["neon-button-content"]}>{children}</div>
+      <div>{children}</div>
     </a>
   );
 }
