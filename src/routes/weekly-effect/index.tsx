@@ -12,6 +12,7 @@ export default function Index() {
         <Link to="one">鼠标镶边</Link>
         <Link to="two">动态配色</Link>
         <Link to="three">粘性标题</Link>
+        <Link to="five">霓虹按钮</Link>
       </Space>
     </>
   );

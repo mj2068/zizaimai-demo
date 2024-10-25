@@ -37,7 +37,7 @@ export default function Three() {
         <ul style={{ marginLeft: "0.5rem" }}>
           <li>粘性标题元素跟随页面滚动</li>
           <li>布局支持宽度响应式，横竖版切换断点设在768px</li>
-          <li>内容为随机模板文字，AI生成</li>
+          <li>内容为随机模板文字，AI生成（claude-3.5-sonnet）</li>
         </ul>
       </Flex>
 
