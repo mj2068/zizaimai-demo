@@ -99,14 +99,18 @@ const router = createBrowserRouter(
                 tags: ["按钮", "CSS"],
               },
             },
+            {
+              path: "/weekly-effect/four",
+              lazy: () => import("./routes/weekly-effect/four"),
+              handle: {
+                title: "弹性网格布局",
+                icon: <UpButton />,
+                tags: ["CSS", "布局", "网格"],
+              },
+            },
           ],
         },
       ],
-    },
-    {
-      path: "/weekly-effect/four",
-      lazy: () => import("./routes/weekly-effect/four"),
-      handle: { title: "动态标题", icon: <UpButton /> },
     },
   ],
   {
