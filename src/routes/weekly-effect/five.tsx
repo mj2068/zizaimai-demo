@@ -83,7 +83,7 @@ export default function Five() {
             marginBottom: "4rem",
           }}
           tabIndex={0}
-          color={color.hex()}
+          color={buttonLabel.length ? color.hex() : undefined}
           borderColor={colorBorder.hex()}
         >
           {/* <IconFavoriteOutlineRounded style={{ verticalAlign: "middle" }} /> */}

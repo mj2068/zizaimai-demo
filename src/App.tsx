@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Debug_Sizes from "./components/Debug_Sizes";
 import useDebug from "./hooks/useDebug";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { AppContext } from "./AppContext";
 import { Theme, ThemeSetting } from "./theme";
 import { Flex } from "antd";
@@ -18,7 +18,7 @@ declare global {
 
 if (import.meta.env.DEV) console.log("App.tsx");
 
-function App() {
+export default function App() {
   if (import.meta.env.DEV) console.log("App()");
 
   /* ************ debug ************ */
@@ -115,20 +115,25 @@ function App() {
           isMinWidth425,
         }}
       >
-        {showDebug && <Debug_Sizes />}
-        <Flex vertical>
-          <Header />
+        <Flex id="app" vertical justify="space-between">
+          {showDebug && <Debug_Sizes />}
+          <Flex vertical>
+            <Header />
 
-          <main>
-            <Outlet />
-          </main>
+            {import.meta.env.DEV && <Link to="debug">debug</Link>}
+
+            <main>
+              <Outlet />
+            </main>
+          </Flex>
+
+          <Footer toggleDebug={toggleDebug} />
+
+          <GotoTopButton />
         </Flex>
-        <Footer toggleDebug={toggleDebug} />
-
-        <GotoTopButton />
       </AppContext.Provider>
     </>
   );
 }
 
-export default App;
+export { App as Component };

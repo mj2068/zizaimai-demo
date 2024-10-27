@@ -6,8 +6,9 @@ import { useMatches } from "react-router-dom";
 import { RouteHandle } from "@/main";
 import { Tag } from "antd";
 import IconInfoRounded from "~icons/material-symbols/info-rounded";
+import Resizable from "@/components/Resizable";
 
-export default function Four() {
+export default function FourResizable() {
   const matches = useMatches();
 
   const tags = (matches[matches.length - 1]?.handle as RouteHandle | undefined)
@@ -38,7 +39,7 @@ export default function Four() {
         )}
         <p>
           <IconInfoRounded style={{ verticalAlign: "top" }} />
-          这种布局的优势在于不同容器可根据需要在基础宽度之上弹性突出。查看效果PC端调整浏览器宽度，移动端切换横竖屏。
+          这种布局的好处是不同容器可根据需要在基础宽度之上弹性突出。查看效果PC端调整浏览器宽度，移动端切换横竖屏。
         </p>
         <div className={classes["controls-container"]}>
           <label>
@@ -52,37 +53,39 @@ export default function Four() {
         </div>
       </div>
 
-      <div
-        className={`${isDark ? ` ${classes["dark"]}` : ""}`}
-        style={{
-          position: "relative",
-          isolation: "isolate",
-        }}
-      >
-        <div className={`${classes["container"]}`}>
-          <div className={classes["full-width"]}></div>
-          <div className={classes["popout"]}></div>
-          <div className={classes["content"]}></div>
-          <div className={classes["feature"]}></div>
-          <div className={classes["content"]}></div>
-          <div className={classes["content"]}></div>
-          <div className={classes["full-width"]}></div>
-          <div className={classes["content"]}></div>
-          <div className={classes["content"]}></div>
-          <div className={classes["popout"]}></div>
-          <div className={classes["content"]}></div>
-        </div>
+      <Resizable>
         <div
-          className={`${classes["container"]} ${classes["debug"]} ${
-            showDebug ? classes["show"] : ""
-          }`}
+          className={`${isDark ? ` ${classes["dark"]}` : ""}`}
+          style={{
+            position: "relative",
+            isolation: "isolate",
+          }}
         >
-          <div className={classes["full-width"]}></div>
-          <div className={classes["feature"]}></div>
-          <div className={classes["popout"]}></div>
-          <div className={classes["content"]}></div>
+          <div className={`${classes["container"]}`}>
+            <div className={classes["full-width"]}></div>
+            <div className={classes["popout"]}></div>
+            <div className={classes["content"]}></div>
+            <div className={classes["feature"]}></div>
+            <div className={classes["content"]}></div>
+            <div className={classes["content"]}></div>
+            <div className={classes["full-width"]}></div>
+            <div className={classes["content"]}></div>
+            <div className={classes["content"]}></div>
+            <div className={classes["popout"]}></div>
+            <div className={classes["content"]}></div>
+          </div>
+          <div
+            className={`${classes["container"]} ${classes["debug"]} ${
+              showDebug ? classes["show"] : ""
+            }`}
+          >
+            <div className={classes["full-width"]}></div>
+            <div className={classes["feature"]}></div>
+            <div className={classes["popout"]}></div>
+            <div className={classes["content"]}></div>
+          </div>
         </div>
-      </div>
+      </Resizable>
 
       <div className={appClasses["text-container"]}>
         <p>命名网格线 + minmax()定义列宽</p>
@@ -91,4 +94,4 @@ export default function Four() {
   );
 }
 
-export { Four as Component };
+export { FourResizable as Component };

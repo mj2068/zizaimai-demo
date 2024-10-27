@@ -108,9 +108,22 @@ const router = createBrowserRouter(
                 tags: ["CSS", "布局", "网格"],
               },
             },
+            {
+              path: "/weekly-effect/four-resizable",
+              lazy: () => import("./routes/weekly-effect/four-resizable"),
+              handle: {
+                title: "弹性网格布局",
+                icon: <UpButton />,
+                tags: ["CSS", "布局", "网格"],
+              },
+            },
           ],
         },
       ],
+    },
+    {
+      path: "debug",
+      lazy: () => import("@/routes/debug"),
     },
   ],
   {

@@ -4,8 +4,6 @@ import JpgFooter from "@/assets/v4-footer.jpg";
 import { Link } from "react-router-dom";
 
 export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
-  if (import.meta.env.DEV) console.log("Footer()");
-
   return (
     <footer className="small-text gray-text">
       <Flex vertical align="center">
@@ -22,11 +20,10 @@ export default function Footer({ toggleDebug }: { toggleDebug?: () => void }) {
           width={96}
           style={{
             boxShadow: "0 0 2px 2px rgba(0, 0, 0, 0.4)",
-            marginBottom: "0.5rem",
           }}
         />
 
-        <Flex align="flex-end" gap="0.25rem">
+        <Flex align="flex-end" gap="0.25rem" style={{ marginTop: "0.5rem" }}>
           <IconEmail style={{ fontSize: "0.8rem" }} />
           <a className="" href="mailto:yuelianghushenfu@sina.com">
             yuelianghushenfu@sina.com

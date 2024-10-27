@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  /* background-color: pink; */
+}
+
+.indicator-line {
+  width: 0.25em;
+  cursor: col-resize;
+  /* background-color: red; */
+  display: flex;
+  place-items: center;
+  position: relative;
+
+  touch-action: none;
+}
+.indicator-line::before,
+.indicator-line::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: lightgray;
+  /* border-inline: 1px solid darkgray; */
+  box-sizing: border-box;
+}
+.indicator-line::after {
+  background-color: #555;
+  height: min(3em, 50%);
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+/* .dark .indicator-line { */
+/*   background-color: red; */
+/* } */
