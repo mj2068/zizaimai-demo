@@ -6,11 +6,17 @@ export default function Debug() {
       <Resizable>
         <p>hello world</p>
       </Resizable>
-      
-      <div></div>
+
+      <div
+        style={{
+          backgroundColor: "pink",
+        }}
+        onPointerDown={(e) => {
+          console.log("pointer down", e);
+        }}
+      >hello</div>
     </div>
   );
 }
 
-// export const Component = Debug;
 export { Debug as Component };

@@ -1,6 +1,5 @@
 import { AnchorHTMLAttributes, CSSProperties, PropsWithChildren } from "react";
 import classes from "./NeonButton.module.css";
-console.log(classes);
 
 export default function NeonButton({
   children,
