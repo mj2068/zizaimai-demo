@@ -107,7 +107,7 @@ export default function Demo() {
               <span>开发说明</span>
             </Link>
             <a
-              className="button with-icon"
+              className="button with-icon external-link"
               href="/demo/dvdrental"
               target="_blank"
               style={{ backgroundColor: projectBgColors.rental.accent }}

@@ -100,7 +100,7 @@ const router = createBrowserRouter(
               },
             },
             {
-              path: "/weekly-effect/four",
+              path: "four",
               lazy: () => import("./routes/weekly-effect/four"),
               handle: {
                 title: "弹性网格布局",
@@ -109,7 +109,7 @@ const router = createBrowserRouter(
               },
             },
             {
-              path: "/weekly-effect/four-resizable",
+              path: "four-resizable",
               lazy: () => import("./routes/weekly-effect/four-resizable"),
               handle: {
                 title: "弹性网格布局",
@@ -120,6 +120,11 @@ const router = createBrowserRouter(
           ],
         },
       ],
+    },
+    {
+      path: "parallax-hero",
+      lazy: () => import("./routes/parallax-hero"),
+      handle: { title: "视差效果页头", icon: <UpButton /> },
     },
     {
       path: "debug",

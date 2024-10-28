@@ -15,6 +15,9 @@ export default function Index() {
         <Link to="three">粘性标题</Link>
         <Link to="four">弹性网格布局</Link>
         <Link to="five">霓虹按钮</Link>
+        <Link to="/parallax-hero" target="_blank" className="external-link">
+          视差效果页头
+        </Link>
       </Space>
     </>
   );

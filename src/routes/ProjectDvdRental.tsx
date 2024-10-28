@@ -54,7 +54,7 @@ const ProjectDvdRental: React.FC = () => {
 
           <div className="button-container">
             <a
-              className="button with-icon"
+              className="button with-icon external-link"
               href="/demo/dvdrental"
               target="_blank"
               style={{ backgroundColor: bgColor.accent, verticalAlign: "top" }}
@@ -67,7 +67,7 @@ const ProjectDvdRental: React.FC = () => {
           <p>
             本应用是一个自主开发的物品租赁管理系统。设计要求英文UI，指定了开发时音像制品模板数据库。功能上实现对各记录主体的清单列表和详情查询等功能。
           </p>
-<div style={{ marginTop: "1rem" }}>
+          <div style={{ marginTop: "1rem" }}>
             <a
               href="https://github.com/mj2068/dvdrental-app"
               target="_blank"

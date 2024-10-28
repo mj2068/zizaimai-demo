@@ -12,7 +12,7 @@ export default function Resizable({ children }: PropsWithChildren) {
   const refContainer = useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = useState(false);
   const [handleLeft, setHandleLeft] =
-    useState<CSSProperties["flexBasis"]>("50%");
+    useState<CSSProperties["flexBasis"]>();
 
   useEffect(() => {
     const handle = refHandle.current;
