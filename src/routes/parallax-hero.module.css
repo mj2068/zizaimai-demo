@@ -40,10 +40,16 @@
   cursor: pointer;
   box-shadow: 2px 2px 4px #000;
   position: relative;
+  color: antiquewhite;
+  background-color: #001528;
 }
 .header button:hover {
-  background-color: #001528;
-  color: antiquewhite;
+  color: #001528;
+  background-color: antiquewhite;
+  box-shadow: 0 0 16px antiquewhite;
+}
+.header button:active {
+  scale: 0.95;
 }
 
 .parallax img {
@@ -62,16 +68,12 @@
   --parallax-speed: -100;
 }
 
-.parallax .parallax-whale1-container,
-.parallax .parallax-whale2-container,
-.parallax .parallax-whale3-container {
-}
 .parallax-whale1-container {
   position: absolute;
   width: 70%;
   left: 10%;
   top: 20%;
-  --parallax-speed: 40;
+  --parallax-speed: 30;
 }
 .parallax-whale1 {
   /* scale: 0.7; */
@@ -107,31 +109,115 @@
 .parallax-fg-back {
   position: absolute;
   left: -4px;
-  bottom: 8px;
-  filter: blur(2px);
+  bottom: 12px;
+  filter: blur(4px);
   z-index: 2;
   pointer-events: none;
 }
 .parallax-fg-front {
   position: absolute;
   bottom: 0px;
-  filter: blur(2px);
+  filter: blur(4px);
   z-index: 3;
   pointer-events: none;
 }
 
 @keyframes parallax {
   to {
-    transform: translateY(calc(var(--parallax-speed) * 100px));
+    transform: translateY(min(calc(var(--parallax-speed) * 100px), 5500px));
   }
 }
 
 main {
   background-color: #001528;
   position: relative;
-  top: -4px;
-  padding-top: 4rem;
+  /* top: -10px; */
+  padding-top: 15vh;
+
+  h1 {
+    text-align: center;
+    color: #61dafb;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+    margin-bottom: 1.5em;
+  }
+
+  h2 {
+    color: #00b7ff;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1890ff;
+  }
+
+  h3 {
+    color: #69c0ff;
+    margin-top: 25px;
+  }
+
+  p {
+    color: #e1e7ed;
+    margin-bottom: 1.2em;
+    line-height: 1.8;
+  }
+
+  ul {
+    padding-left: 20px;
+    list-style-type: none;
+  }
+
+  li {
+    margin: 10px 0;
+    position: relative;
+    padding-left: 80px;
+  }
+
+  li:before {
+    content: "•";
+    color: #1890ff;
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+  }
+
+  /* Add a subtle hover effect on list items */
+  li:hover {
+    color: #69c0ff;
+    transition: color 0.3s ease;
+  }
+
+  /* Add some spacing between sections */
+  section {
+    margin: 40px 0;
+  }
+
+  /* Make the text more readable with a subtle gradient background */
+  p,
+  li {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 21, 40, 0) 0%,
+      rgba(24, 144, 255, 0.05) 50%,
+      rgba(0, 21, 40, 0) 100%
+    );
+    padding: 5px 20px;
+    border-radius: 4px;
+  }
+
+  /* Add a nice box shadow effect on hover for headings */
+  h2:hover,
+  h3:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+  }
 }
-main > :first-child {
-  margin-top: 0;
+main .joint-cover {
+  position: absolute;
+  top: -8px;
+  width: 100%;
+  height: 8px;
+  background-color: #001528;
+}
+main .content-container {
+  max-width: 92ch;
+  margin-inline: auto;
 }
